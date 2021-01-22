@@ -16,7 +16,7 @@ namespace PropertiesValidation.Base
         {
             if(Validation == null)
                 throw new NullReferenceException("Call Init() first");
-            Validation.NotifyPropertiesChangedCommand.Execute("ALL");
+            Validation.NotifyPropertiesChangedCommand.Execute(null);
             return Validation.All(x => x.Value);
         }
     }
