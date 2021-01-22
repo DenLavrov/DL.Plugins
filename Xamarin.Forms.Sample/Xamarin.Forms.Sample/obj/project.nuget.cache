@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "JZsejs+ZsJX4SqPcZQhKZWCmtJrb+yLAzbkbPf6lMRoi5HwElwfU/gWNkW972dCTvaxVlYA5yj+MPVISd6jmpw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\denis\\source\\repos\\PropertiesValidation\\Xamarin.Forms.Sample\\Xamarin.Forms.Sample\\Xamarin.Forms.Sample.csproj",
+  "expectedPackageFiles": [
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.8.0.1451\\xamarin.forms.4.8.0.1451.nupkg.sha512"
+  ],
+  "logs": []
+}

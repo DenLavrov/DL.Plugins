@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+      <langversion>8</langversion>
+      <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+      <Authors>Denis Lavrov</Authors>
+      <Company>Binwell</Company>
+      <PackageId>PropertiesValidation_Denis_Lavrov</PackageId>
+      <PackageTags>Validation;Attributes;Xamarin.Forms;MVVM</PackageTags>
+      <Description>Simple validation for Xamarin.Forms projects with MVVM structure
+Can be used by any project with c# lang</Description>
+      <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+</Project>
