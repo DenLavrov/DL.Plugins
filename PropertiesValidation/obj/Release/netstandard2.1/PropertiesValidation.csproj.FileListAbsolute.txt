@@ -1,8 +1,0 @@
-C:\Users\denis\source\repos\PropertiesValidation\PropertiesValidation\bin\Release\netstandard2.1\PropertiesValidation.deps.json
-C:\Users\denis\source\repos\PropertiesValidation\PropertiesValidation\bin\Release\netstandard2.1\PropertiesValidation.dll
-C:\Users\denis\source\repos\PropertiesValidation\PropertiesValidation\bin\Release\netstandard2.1\PropertiesValidation.pdb
-C:\Users\denis\source\repos\PropertiesValidation\PropertiesValidation\obj\Release\netstandard2.1\PropertiesValidation.AssemblyInfoInputs.cache
-C:\Users\denis\source\repos\PropertiesValidation\PropertiesValidation\obj\Release\netstandard2.1\PropertiesValidation.AssemblyInfo.cs
-C:\Users\denis\source\repos\PropertiesValidation\PropertiesValidation\obj\Release\netstandard2.1\PropertiesValidation.csproj.CoreCompileInputs.cache
-C:\Users\denis\source\repos\PropertiesValidation\PropertiesValidation\obj\Release\netstandard2.1\PropertiesValidation.dll
-C:\Users\denis\source\repos\PropertiesValidation\PropertiesValidation\obj\Release\netstandard2.1\PropertiesValidation.pdb
