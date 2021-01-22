@@ -2,11 +2,11 @@
 
 namespace PropertiesValidation.Implementations
 {
-    public class MaxValueValidation: ValidationAttribute
+    public class MaxValueValidationAttribute: ValidationAttribute
     {
         public float MaxValue { get; }
 
-        public MaxValueValidation(float maxValue, string parameterName = null, bool defaultValue = true) : base(parameterName, defaultValue)
+        public MaxValueValidationAttribute(float maxValue, string parameterName = null, bool defaultValue = true) : base(parameterName, defaultValue)
         {
             MaxValue = maxValue;
         }
