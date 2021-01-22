@@ -2,7 +2,7 @@
 
 namespace PropertiesValidation.Implementations
 {
-    class ValueMultiplicationValidationAttribute: ValidationAttribute
+    public class ValueMultiplicationValidationAttribute: ValidationAttribute
     {
         public ValueMultiplicationValidationAttribute(string parameterName = null, bool defaultValue = true) : base(parameterName, defaultValue)
         {

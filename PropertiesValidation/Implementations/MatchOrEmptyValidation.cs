@@ -1,6 +1,6 @@
 ﻿namespace PropertiesValidation.Implementations
 {
-    class MatchOrEmptyValidationAttribute: RegexValidationAttribute
+    public class MatchOrEmptyValidationAttribute: RegexValidationAttribute
     {
         public override bool Validate(object input, object parameter = null)
         {

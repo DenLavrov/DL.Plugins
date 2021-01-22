@@ -2,7 +2,7 @@
 
 namespace PropertiesValidation.Implementations
 {
-    class MatchOrLessLengthValidationAttribute: ValidationAttribute
+    public class MatchOrLessLengthValidationAttribute: ValidationAttribute
     {
         public int Length { get; }
 
