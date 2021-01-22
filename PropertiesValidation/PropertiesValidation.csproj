@@ -12,6 +12,9 @@
 Can be used by any project with c# lang</Description>
       <PackageLicenseExpression>MIT</PackageLicenseExpression>
       <Version>1.0.3</Version>
+      <PackageProjectUrl>https://github.com/DenLavrov/PropertiesValidation</PackageProjectUrl>
+      <RepositoryUrl>https://github.com/DenLavrov/PropertiesValidation</RepositoryUrl>
+      <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
 </Project>
