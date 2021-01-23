@@ -1,5 +1,5 @@
 # PropertiesValidation
-Simple validation for properties in Xamarin.Forms projects with MVVM architecture
+Simple lightweight validation for properties in Xamarin.Forms projects with MVVM architecture
 # Usage
 
 First thing is to implement IValidatable interface by the object which properties you want to be validated
