@@ -75,3 +75,7 @@ public class NotEmptyValidationAttribute: ValidationAttribute
     }
 
 ```
+
+# Examples
+
+Usage with pure MVVM architecture can be found in samples
