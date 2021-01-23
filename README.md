@@ -60,3 +60,18 @@ Validation["PropertyName"] = false
 
 this will also trigger property changed event
 
+# Custom Validation
+
+Simply derive from ValidationAttribute
+
+```
+public class NotEmptyValidationAttribute: ValidationAttribute
+    {
+        public override bool Validate(object input, object parameter = null)
+        {
+            var value = input?.ToString();
+            return !string.IsNullOrWhiteSpace(value) || !string.IsNullOrEmpty(value);
+        }
+    }
+
+```
