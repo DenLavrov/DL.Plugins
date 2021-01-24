@@ -2,7 +2,7 @@
 Simple lightweight validation for properties in Xamarin.Forms projects with MVVM architecture
 # Usage
 
-First thing is to implement IValidatable interface by the object which properties you want to be validated
+First thing is to implement IValidatable interface by the object which properties you want to be validated.
 ```
 
 public class BaseViewModel: IValidatable
@@ -21,7 +21,8 @@ public class BaseViewModel: IValidatable
     }
     
 ```
-You can validate any property within validatable class by marking it with ValidationAttribute
+You can validate any property within validatable class by marking it with ValidationAttribute.
+If there are more than one attribute, then property will be valid if all of the conditions are matched.
 
 ```
 
@@ -34,7 +35,8 @@ You can validate any property within validatable class by marking it with Valida
         
 ```
 
-And then triiger a validation by command. You can bind to it from your page
+Triger a validation by command. You can bind to it from your page passing a property name as a command parameter.
+You can pass IEnumerable of PropertyNames, to validate a set of properties, or null to validate all of proprties.
 
 ```
 
@@ -42,7 +44,7 @@ Validation.NotifyOfPropertiesChanged.Execute("{PropertyName}");
 
 ```
 
-You can access the result of validation like this
+You can access the result of validation like this.
 
 ```
 
@@ -50,7 +52,7 @@ Validation["PropertyName"]
 
 ```
 
-Validation implements INotifyProperyChanged so after Notify Command triggered ui gets changes. And you can pass harcoded value 
+Validation implements INotifyProperyChanged so after Notify Command is triggered ui gets changes. And you can pass harcoded value
 
 ```
 
