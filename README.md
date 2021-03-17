@@ -7,14 +7,14 @@ First thing is to implement IValidatable interface by the object which propertie
 
 public class BaseViewModel: IValidatable
     {
-        public DynamicValuesDictionary<string, bool> Validation { get; set; }
+        public DynamicValuesDictionary<string, ValidationResult> Validation { get; set; }
 
         public BaseViewModel()
         {
             ((IValidatable)this).Init();
         }
 
-        protected bool Validate()
+        protected ValidationResult Validate()
         {
             return ((IValidatable) this).ValidateAll();
         }
@@ -26,12 +26,13 @@ If there are more than one attribute, then property will be valid if all of the 
 
 ```
 
-[RegexValidation(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")]
-        public string Login
-        {
-            get => Get<string>();
-            set => Set(value);
-        }
+[NotEmptyValidation("Login cannot be empty")]
+[RegexValidation(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", errorMessage: "Regex error")]
+public string Login
+{
+    get => Get<string>();
+    set => Set(value);
+}
         
 ```
 
@@ -52,11 +53,22 @@ Validation["PropertyName"]
 
 ```
 
-Validation implements INotifyProperyChanged so after Notify Command is triggered ui gets changes. And you can pass harcoded value
+Validation implements INotifyProperyChanged so after Notify Command is triggered ui gets changes.
+Binding example
 
 ```
 
-Validation["PropertyName"] = false
+.Bind(IsValidProperty, "Validation['PropertyName'].IsValid");
+
+.Bind(ErrorMessageProperty, "Validation['PropertyName'].Message");
+
+```
+
+And you can pass harcoded value
+
+```
+
+Validation["PropertyName"] = new ValidationResult { IsValid = false }
 
 ```
 
@@ -69,6 +81,10 @@ Simply derive from ValidationAttribute
 ```
 public class NotEmptyValidationAttribute: ValidationAttribute
     {
+        public NotEmptyValidationAttribute(string errorMessage = null): base(errorMessage: errorMessage)
+        {
+        }
+        
         public override bool Validate(object input, object parameter = null)
         {
             var value = input?.ToString();
