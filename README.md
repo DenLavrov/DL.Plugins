@@ -7,14 +7,14 @@ First thing is to implement IValidatable interface by the object which propertie
 
 public class BaseViewModel: IValidatable
     {
-        public DynamicValuesDictionary<string, bool> Validation { get; set; }
+        public DynamicValuesDictionary<string, ValidationResult> Validation { get; set; }
 
         public BaseViewModel()
         {
             ((IValidatable)this).Init();
         }
 
-        protected bool Validate()
+        protected ValidationResult Validate()
         {
             return ((IValidatable) this).ValidateAll();
         }
@@ -26,7 +26,8 @@ If there are more than one attribute, then property will be valid if all of the 
 
 ```
 
-[RegexValidation(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")]
+        [NotEmptyValidation("Login cannot be empty")]
+        [RegexValidation(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", errorMessage: "Regex error")]
         public string Login
         {
             get => Get<string>();
@@ -56,7 +57,7 @@ Validation implements INotifyProperyChanged so after Notify Command is triggered
 
 ```
 
-Validation["PropertyName"] = false
+Validation["PropertyName"] = new ValidationResult { IsValid = false }
 
 ```
 
@@ -69,6 +70,10 @@ Simply derive from ValidationAttribute
 ```
 public class NotEmptyValidationAttribute: ValidationAttribute
     {
+        public NotEmptyValidationAttribute(string errorMessage = null): base(errorMessage: errorMessage)
+        {
+        }
+        
         public override bool Validate(object input, object parameter = null)
         {
             var value = input?.ToString();
