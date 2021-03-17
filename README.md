@@ -53,7 +53,18 @@ Validation["PropertyName"]
 
 ```
 
-Validation implements INotifyProperyChanged so after Notify Command is triggered ui gets changes. And you can pass harcoded value
+Validation implements INotifyProperyChanged so after Notify Command is triggered ui gets changes.
+Binding example
+
+```
+
+.Bind(IsValidProperty, "Validation['PropertyName'].IsValid");
+
+.Bind(ErrorMessageProperty, "Validation['PropertyName'].Message");
+
+```
+
+And you can pass harcoded value
 
 ```
 
