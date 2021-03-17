@@ -26,13 +26,13 @@ If there are more than one attribute, then property will be valid if all of the 
 
 ```
 
-        [NotEmptyValidation("Login cannot be empty")]
-        [RegexValidation(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", errorMessage: "Regex error")]
-        public string Login
-        {
-            get => Get<string>();
-            set => Set(value);
-        }
+[NotEmptyValidation("Login cannot be empty")]
+[RegexValidation(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", errorMessage: "Regex error")]
+public string Login
+{
+    get => Get<string>();
+    set => Set(value);
+}
         
 ```
 
