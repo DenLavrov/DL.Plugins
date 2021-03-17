@@ -19,7 +19,7 @@ namespace Xamarin.Forms.Sample.UI.Pages
                         .Bind(ValidatableEntry.ErrorTextProperty, "Validation[Login].Message")
                         .Bind(ValidatableEntry.TextProperty, "Login")
                         .Bind(ValidatableEntry.ValidateCommandProperty, "Validation.NotifyPropertiesChangedCommand")
-                        .Bind(ValidatableEntry.IsValidProperty, "Validation[Login].IsValid"),
+                        .Bind(ValidatableEntry.IsValidProperty, "Validation[Login]"),
                     new ValidatableEntry
                         {
                             ValidateCommandParameter = "Password"
@@ -27,7 +27,7 @@ namespace Xamarin.Forms.Sample.UI.Pages
                         .Bind(ValidatableEntry.ErrorTextProperty, "Validation[Password].Message")
                         .Bind(ValidatableEntry.TextProperty, "Password")
                         .Bind(ValidatableEntry.ValidateCommandProperty, "Validation.NotifyPropertiesChangedCommand")
-                        .Bind(ValidatableEntry.IsValidProperty, "Validation[Password].IsValid"),
+                        .Bind(ValidatableEntry.IsValidProperty, "Validation[Password]"),
                     new Button
                     {
                         Text = "Validate all"

@@ -5,5 +5,7 @@ namespace PropertiesValidation.Base
         public bool IsValid { get; set; }
         
         public string Message { get; set; }
+
+        public static implicit operator bool(ValidationResult validationResult) => validationResult.IsValid;
     }
 }
