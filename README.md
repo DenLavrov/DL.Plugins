@@ -58,7 +58,7 @@ Binding example
 
 ```
 
-.Bind(IsValidProperty, "Validation['PropertyName'].IsValid");
+.Bind(IsValidProperty, "Validation['PropertyName'].IsValid"); or .Bind(IsValidProperty, "Validation['PropertyName']");
 
 .Bind(ErrorMessageProperty, "Validation['PropertyName'].Message");
 
