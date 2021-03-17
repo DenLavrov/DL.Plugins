@@ -14,20 +14,20 @@ namespace Xamarin.Forms.Sample.UI.Pages
                 Children = {
                     new ValidatableEntry
                     {
-                        ValidateCommandParameter = "Login",
-                        ErrorText = "Wrong login"
+                        ValidateCommandParameter = "Login"
                     }
+                        .Bind(ValidatableEntry.ErrorTextProperty, "Validation[Login].Message")
                         .Bind(ValidatableEntry.TextProperty, "Login")
                         .Bind(ValidatableEntry.ValidateCommandProperty, "Validation.NotifyPropertiesChangedCommand")
-                        .Bind(ValidatableEntry.IsValidProperty, "Validation[Login]"),
+                        .Bind(ValidatableEntry.IsValidProperty, "Validation[Login].IsValid"),
                     new ValidatableEntry
                         {
-                            ValidateCommandParameter = "Password",
-                            ErrorText = "Wrong password"
+                            ValidateCommandParameter = "Password"
                         }
+                        .Bind(ValidatableEntry.ErrorTextProperty, "Validation[Password].Message")
                         .Bind(ValidatableEntry.TextProperty, "Password")
                         .Bind(ValidatableEntry.ValidateCommandProperty, "Validation.NotifyPropertiesChangedCommand")
-                        .Bind(ValidatableEntry.IsValidProperty, "Validation[Password]"),
+                        .Bind(ValidatableEntry.IsValidProperty, "Validation[Password].IsValid"),
                     new Button
                     {
                         Text = "Validate all"

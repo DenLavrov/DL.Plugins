@@ -8,14 +8,14 @@ namespace Xamarin.Forms.Sample.BL.ViewModels
 {
     public class BaseViewModel: Bindable, IValidatable
     {
-        public DynamicValuesDictionary<string, bool> Validation { get; set; }
+        public DynamicValuesDictionary<string, ValidationResult> Validation { get; set; }
 
         public BaseViewModel()
         {
             ((IValidatable)this).Init();
         }
 
-        protected bool Validate()
+        protected ValidationResult Validate()
         {
             return ((IValidatable) this).ValidateAll();
         }

@@ -5,19 +5,21 @@ namespace PropertiesValidation.Base
 {
     public interface IValidatable
     {
-        public DynamicValuesDictionary<string, bool> Validation { get; set; }
+        public DynamicValuesDictionary<string, ValidationResult> Validation { get; set; }
 
         public void Init()
         {
             ValidationAttribute.SetFor(this);
         }
 
-        public bool ValidateAll()
+        public ValidationResult ValidateAll()
         {
-            if(Validation == null)
+            if (Validation == null)
                 throw new NullReferenceException("Call Init() first");
             Validation.NotifyPropertiesChangedCommand.Execute(null);
-            return Validation.All(x => x.Value);
+            return Validation.Any(x => !x.Value.IsValid)
+                ? Validation.First(x => !x.Value.IsValid).Value
+                : Validation.First().Value;
         }
     }
 }

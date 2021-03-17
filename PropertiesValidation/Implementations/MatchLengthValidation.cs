@@ -18,7 +18,7 @@ namespace PropertiesValidation.Implementations
 
         public int MatchLength { get; }
 
-        public MatchLengthValidationAttribute(Symbol[] allowedSymbols, int matchLength, string parameterName = null, bool defaultValue = true) : base(parameterName, defaultValue)
+        public MatchLengthValidationAttribute(Symbol[] allowedSymbols, int matchLength, string parameterName = null, string errorMessage = null, bool defaultValue = true) : base(parameterName, errorMessage, defaultValue)
         {
             AllowedSymbols = allowedSymbols;
             MatchLength = matchLength;

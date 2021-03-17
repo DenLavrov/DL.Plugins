@@ -6,7 +6,7 @@ namespace PropertiesValidation.Implementations
     {
         public float MaxValue { get; }
 
-        public MaxValueValidationAttribute(float maxValue, string parameterName = null, bool defaultValue = true) : base(parameterName, defaultValue)
+        public MaxValueValidationAttribute(float maxValue, string parameterName = null, string errorMessage = null, bool defaultValue = true) : base(parameterName, errorMessage, defaultValue)
         {
             MaxValue = maxValue;
         }

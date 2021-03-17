@@ -6,7 +6,7 @@
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
       <Authors>Denis Lavrov</Authors>
       <Company>Binwell</Company>
-      <PackageId>Xam.Plugin.PropertiesValidation</PackageId>
+      <PackageId>Xam.Plugin.Validation</PackageId>
       <PackageTags>Validation;Attributes;Xamarin.Forms;MVVM;Android;iOS;Xamarin</PackageTags>
       <Description>Simple validation for Xamarin.Forms projects with MVVM structure
 Can be used by any project with c# lang</Description>
@@ -15,6 +15,7 @@ Can be used by any project with c# lang</Description>
       <PackageProjectUrl>https://github.com/DenLavrov/PropertiesValidation</PackageProjectUrl>
       <RepositoryUrl>https://github.com/DenLavrov/PropertiesValidation</RepositoryUrl>
       <RepositoryType>git</RepositoryType>
+      <PackageVersion>1.1.0</PackageVersion>
   </PropertyGroup>
 
 </Project>

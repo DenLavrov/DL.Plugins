@@ -9,7 +9,7 @@ namespace PropertiesValidation.Implementations
     {
         public int MinLength { get; }
 
-        public MinLengthValidationAttribute(int minLength, string parameterName = null, bool defaultValue = true): base(parameterName, defaultValue)
+        public MinLengthValidationAttribute(int minLength, string parameterName = null, string errorMessage = null, bool defaultValue = true): base(parameterName, errorMessage, defaultValue)
         {
             MinLength = minLength;
         }

@@ -8,7 +8,7 @@
             return string.IsNullOrEmpty(val) || base.Validate(val);
         }
 
-        public MatchLengthOrEmptyValidationAttribute(Symbol[] allowedSymbols, int matchLength, string parameterName = null, bool defaultValue = true) : base(allowedSymbols, matchLength, parameterName, defaultValue)
+        public MatchLengthOrEmptyValidationAttribute(Symbol[] allowedSymbols, int matchLength, string parameterName = null, string errorMessage = null, bool defaultValue = true) : base(allowedSymbols, matchLength, parameterName, errorMessage, defaultValue)
         {
         }
     }

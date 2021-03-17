@@ -9,14 +9,16 @@ namespace Xamarin.Forms.Sample.BL.ViewModels
 {
     public class PropertiesValidationViewModel : BaseViewModel
     {
-        [RegexValidation(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")]
+        [NotEmptyValidation("Login cannot be empty")]
+        [RegexValidation(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", errorMessage: "Regex error")]
         public string Login
         {
             get => Get<string>();
             set => Set(value);
         }
 
-        [MinLengthValidation(6)]
+        [NotEmptyValidation("Password cannot be empty")]
+        [MinLengthValidation(6, errorMessage: "Password has to be 6 letters long")]
         public string Password
         {
             get => Get<string>();

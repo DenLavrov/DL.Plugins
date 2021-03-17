@@ -8,7 +8,7 @@
             return string.IsNullOrEmpty(value) || base.Validate(value);
         }
 
-        public MatchOrEmptyValidationAttribute(string regex, string parameterName = null, bool defaultValue = true) : base(regex, parameterName, defaultValue)
+        public MatchOrEmptyValidationAttribute(string regex, string parameterName = null, string errorMessage = null, bool defaultValue = true) : base(regex, errorMessage, parameterName, defaultValue)
         {
         }
     }

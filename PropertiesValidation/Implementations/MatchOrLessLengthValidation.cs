@@ -6,7 +6,7 @@ namespace PropertiesValidation.Implementations
     {
         public int Length { get; }
 
-        public MatchOrLessLengthValidationAttribute(int length, string parameterName = null, bool defaultValue = true) : base(parameterName, defaultValue)
+        public MatchOrLessLengthValidationAttribute(int length, string parameterName = null, string errorMessage = null, bool defaultValue = true) : base(parameterName, errorMessage, defaultValue)
         {
             Length = length;
         }

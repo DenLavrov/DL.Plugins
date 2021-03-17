@@ -7,7 +7,7 @@ namespace PropertiesValidation.Implementations
     {
         public string Regex { get; }
 
-        public RegexValidationAttribute(string regex, string parameterName = null, bool defaultValue = true) : base(parameterName, defaultValue)
+        public RegexValidationAttribute(string regex, string parameterName = null, string errorMessage = null, bool defaultValue = true) : base(parameterName, errorMessage, defaultValue)
         {
             Regex = regex;
         }

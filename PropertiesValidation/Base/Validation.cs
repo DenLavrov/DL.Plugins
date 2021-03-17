@@ -8,13 +8,16 @@ namespace PropertiesValidation.Base
     public abstract class ValidationAttribute : Attribute
     {
         public bool DefaultValue { get; }
-
+        
+        public string ErrorMessage { get; }
+        
         public string ParameterName { get; }
 
-        protected ValidationAttribute(string parameterName = null, bool defaultValue = true)
+        protected ValidationAttribute(string parameterName = null, string errorMessage = null, bool defaultValue = true)
         {
             ParameterName = parameterName;
             DefaultValue = defaultValue;
+            ErrorMessage = errorMessage;
         }
 
         public abstract bool Validate(object input, object parameter = null);
@@ -26,19 +29,31 @@ namespace PropertiesValidation.Base
             var customAttributes = properties.Where(x => IsDefined(x, typeof(ValidationAttribute)))
                 .ToDictionary(x => x.Name, info => info.GetCustomAttributes<ValidationAttribute>().ToList());
             if (!customAttributes.Any()) return;
-            validatable.Validation = new DynamicValuesDictionary<string, bool>();
-            foreach (var (key, value) in customAttributes)
+            validatable.Validation = new DynamicValuesDictionary<string, ValidationResult>();
+            foreach (var (key, validationAttributes) in customAttributes)
             {
                 validatable.Validation.TryAdd(key,
                     () =>
                     {
                         var val = type.GetProperty(key)?.GetValue(validatable);
-                        return value.All(x => x.Validate(val,
-                            string.IsNullOrEmpty(x.ParameterName)
-                                ? null
-                                : type.GetProperty(x.ParameterName)?.GetValue(validatable)));
+                        var firstIsNotValid = validationAttributes.FirstOrDefault(validationAttribute =>
+                            !validationAttribute.Validate(val,
+                                string.IsNullOrEmpty(validationAttribute.ParameterName)
+                                    ? null
+                                    : type.GetProperty(validationAttribute.ParameterName)?.GetValue(validatable))
+                        );
+                        return firstIsNotValid == null
+                            ? new ValidationResult {IsValid = true}
+                            : new ValidationResult
+                            {
+                                IsValid = false,
+                                Message = firstIsNotValid.ErrorMessage
+                            };
                     },
-                    value.All(x => x.DefaultValue));
+                    new ValidationResult
+                    {
+                        IsValid = true
+                    });
             }
         }
     }
