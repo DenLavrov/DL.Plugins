@@ -50,10 +50,7 @@ namespace PropertiesValidation.Base
                                 Message = firstIsNotValid.ErrorMessage
                             };
                     },
-                    new ValidationResult
-                    {
-                        IsValid = true
-                    });
+                    validationAttributes.All(x => x.DefaultValue));
             }
         }
     }

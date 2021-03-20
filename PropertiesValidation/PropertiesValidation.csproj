@@ -15,7 +15,7 @@ Can be used by any project with c# lang</Description>
       <PackageProjectUrl>https://github.com/DenLavrov/PropertiesValidation</PackageProjectUrl>
       <RepositoryUrl>https://github.com/DenLavrov/PropertiesValidation</RepositoryUrl>
       <RepositoryType>git</RepositoryType>
-      <PackageVersion>1.1.1</PackageVersion>
+      <PackageVersion>1.1.2</PackageVersion>
   </PropertyGroup>
 
 </Project>
