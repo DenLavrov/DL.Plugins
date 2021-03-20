@@ -68,7 +68,7 @@ And you can pass harcoded value
 
 ```
 
-Validation["PropertyName"] = new ValidationResult { IsValid = false }
+Validation["PropertyName"] = new ValidationResult { IsValid = false } or Validation["PropertyName"] = false;
 
 ```
 
