@@ -1,4 +1,4 @@
-# PropertiesValidation
+# Xam.Plugin.Validation
 Simple lightweight validation for properties in Xamarin.Forms projects with MVVM architecture
 # Usage
 
