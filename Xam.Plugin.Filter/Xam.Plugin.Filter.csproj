@@ -4,8 +4,8 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>Denis Lavrov</Authors>
-        <PackageProjectUrl>https://github.com/DenLavrov/PropertiesValidation</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/DenLavrov/PropertiesValidation</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/DenLavrov/Xam.Plugin.Validation/tree/main/Xam.Plugin.Filter</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/DenLavrov/Xam.Plugin.Validation/tree/main/Xam.Plugin.Filter</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
