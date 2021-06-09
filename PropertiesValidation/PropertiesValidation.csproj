@@ -15,7 +15,7 @@ Can be used by any project with c# lang</Description>
       <PackageProjectUrl>https://github.com/DenLavrov/Xam.Plugin.Validation/tree/main/PropertiesValidation</PackageProjectUrl>
       <RepositoryUrl>https://github.com/DenLavrov/Xam.Plugin.Validation/tree/main/PropertiesValidation</RepositoryUrl>
       <RepositoryType>git</RepositoryType>
-      <PackageVersion>1.1.2</PackageVersion>
+      <PackageVersion>1.1.3</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>

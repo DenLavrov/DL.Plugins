@@ -32,7 +32,7 @@ namespace PropertiesValidation.Base
             validatable.Validation = new DynamicValuesDictionary<string, ValidationResult>();
             foreach (var (key, validationAttributes) in customAttributes)
             {
-                validatable.Validation.TryAdd(key,
+                validatable.Validation.TryUpdate(key,
                     () =>
                     {
                         var val = type.GetProperty(key)?.GetValue(validatable);

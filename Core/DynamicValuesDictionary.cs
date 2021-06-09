@@ -36,17 +36,17 @@ namespace PropertiesValidation.Base
             }
         }
 
-        public void TryAdd(TKey key, Func<TValue> valueProvider, TValue defaultValue = default)
+        public void TryUpdate(TKey key, Func<TValue> valueProvider, TValue defaultValue = default)
         {
-            try
-            {
-                _valueProviders.Add(key, valueProvider);
-                Add(key, defaultValue);
-            }
-            catch(Exception e)
-            {
-                Debug.Write(e);
-            }
+            if (_valueProviders.ContainsKey(key))
+                _valueProviders[key] = valueProvider;
+            else
+                _valueProviders.TryAdd(key, valueProvider);
+            if (ContainsKey(key))
+                this[key] = defaultValue;
+            else
+                TryAdd(key, defaultValue);
+            OnPropertyChanged($"Item[{key}]");
         }
 
         public new TValue this[TKey key]
