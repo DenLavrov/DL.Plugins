@@ -12,8 +12,8 @@
 Can be used by any project with c# lang</Description>
       <PackageLicenseExpression>MIT</PackageLicenseExpression>
       <Version>1.0.5</Version>
-      <PackageProjectUrl>https://github.com/DenLavrov/PropertiesValidation</PackageProjectUrl>
-      <RepositoryUrl>https://github.com/DenLavrov/PropertiesValidation</RepositoryUrl>
+      <PackageProjectUrl>https://github.com/DenLavrov/Xam.Plugin.Validation/tree/main/PropertiesValidation</PackageProjectUrl>
+      <RepositoryUrl>https://github.com/DenLavrov/Xam.Plugin.Validation/tree/main/PropertiesValidation</RepositoryUrl>
       <RepositoryType>git</RepositoryType>
       <PackageVersion>1.1.2</PackageVersion>
   </PropertyGroup>
