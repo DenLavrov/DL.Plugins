@@ -14,7 +14,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Core\Core.csproj" />
+        <PackageReference Include="PropertiesValidation.Core" Version="1.0.0" />
     </ItemGroup>
 
 </Project>

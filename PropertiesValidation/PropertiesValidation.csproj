@@ -6,7 +6,7 @@
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
       <Authors>Denis Lavrov</Authors>
       <PackageId>Xam.Plugin.Validation</PackageId>
-      <PackageTags>Validation;Attributes;Xamarin.Forms;MVVM;Android;iOS;Xamarin</PackageTags>
+      <PackageTags>Validation;Attributes;.Net;C#;Xamarin.Forms;MVVM;Android;iOS;Xamarin</PackageTags>
       <Description>Simple validation for Xamarin.Forms projects with MVVM structure
 Can be used by any project with c# lang</Description>
       <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -18,7 +18,7 @@ Can be used by any project with c# lang</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj" />
+    <PackageReference Include="PropertiesValidation.Core" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
