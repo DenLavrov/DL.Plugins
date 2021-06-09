@@ -7,6 +7,10 @@
         <PackageProjectUrl>https://github.com/DenLavrov/Xam.Plugin.Validation/tree/main/Xam.Plugin.Filter</PackageProjectUrl>
         <RepositoryUrl>https://github.com/DenLavrov/Xam.Plugin.Validation/tree/main/Xam.Plugin.Filter</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
+        <PackageTags>Filter;Filters;Xamarin.Forms;MVVM;Android;iOS;Xamarin</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Description>Abstract filtering for Xamarin.Forms projects with MVVM structure
+            Can be used by any project with c# lang</Description>
     </PropertyGroup>
 
     <ItemGroup>

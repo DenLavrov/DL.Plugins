@@ -5,7 +5,6 @@
       <langversion>8</langversion>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
       <Authors>Denis Lavrov</Authors>
-      <Company>Binwell</Company>
       <PackageId>Xam.Plugin.Validation</PackageId>
       <PackageTags>Validation;Attributes;Xamarin.Forms;MVVM;Android;iOS;Xamarin</PackageTags>
       <Description>Simple validation for Xamarin.Forms projects with MVVM structure
