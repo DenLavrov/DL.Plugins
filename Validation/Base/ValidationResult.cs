@@ -1,4 +1,4 @@
-namespace PropertiesValidation.Base
+namespace Validation.Base
 {
     public class ValidationResult
     {
@@ -8,6 +8,6 @@ namespace PropertiesValidation.Base
 
         public static implicit operator bool(ValidationResult validationResult) => validationResult.IsValid;
 
-        public static implicit operator ValidationResult(bool isValid) => new ValidationResult {IsValid = isValid};
+        public static implicit operator ValidationResult(bool isValid) => new ValidationResult { IsValid = isValid };
     }
 }

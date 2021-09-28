@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using PropertiesValidation.Base;
-using PropertiesValidation.Extensions;
+using Validation.Base;
+using Validation.Extensions;
 
-namespace PropertiesValidation.Implementations
+namespace Validation.Implementations
 {
     public class MatchLengthValidationAttribute: ValidationAttribute
     {
@@ -18,7 +18,8 @@ namespace PropertiesValidation.Implementations
 
         public int MatchLength { get; }
 
-        public MatchLengthValidationAttribute(Symbol[] allowedSymbols, int matchLength, string parameterName = null, string errorMessage = null, bool defaultValue = true) : base(parameterName, errorMessage, defaultValue)
+        public MatchLengthValidationAttribute(Symbol[] allowedSymbols, int matchLength, string parameterName = null,
+            string errorMessage = null, bool defaultValue = true) : base(parameterName, errorMessage, defaultValue)
         {
             AllowedSymbols = allowedSymbols;
             MatchLength = matchLength;

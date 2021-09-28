@@ -1,13 +1,14 @@
 ﻿using System.Text.RegularExpressions;
-using PropertiesValidation.Base;
+using Validation.Base;
 
-namespace PropertiesValidation.Implementations
+namespace Validation.Implementations
 {
-    public class RegexValidationAttribute: ValidationAttribute
+    public class RegexValidationAttribute : ValidationAttribute
     {
         public string Regex { get; }
 
-        public RegexValidationAttribute(string regex, string parameterName = null, string errorMessage = null, bool defaultValue = true) : base(parameterName, errorMessage, defaultValue)
+        public RegexValidationAttribute(string regex, string parameterName = null, string errorMessage = null,
+            bool defaultValue = true) : base(parameterName, errorMessage, defaultValue)
         {
             Regex = regex;
         }

@@ -419,3 +419,4 @@ ASALocalRun/
 healthchecksdb
 
 # End of https://www.gitignore.io/api/rider,visualstudio,xamarinstudio
+.DS_Store

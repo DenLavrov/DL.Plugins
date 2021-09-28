@@ -4,21 +4,23 @@ using Xamarin.Forms.Sample.UI.Controls;
 
 namespace Xamarin.Forms.Sample.UI.Pages
 {
-    public class PropertiesValidationPage : ContentPage
+    public class ValidationPage : ContentPage
     {
-        public PropertiesValidationPage()
+        public ValidationPage()
         {
-            BindingContext = new PropertiesValidationViewModel();
+            Title = "Validation";
+            BindingContext = new ValidationViewModel();
             Content = new StackLayout
             {
-                Children = {
+                Children =
+                {
                     new ValidatableEntry
-                    {
-                        ValidateCommandParameter = "Login"
-                    }
+                        {
+                            ValidateCommandParameter = "Login"
+                        }
                         .Bind(ValidatableEntry.ErrorTextProperty, "Validation[Login].Message")
                         .Bind(ValidatableEntry.TextProperty, "Login")
-                        .Bind(ValidatableEntry.ValidateCommandProperty, "Validation.NotifyPropertiesChangedCommand")
+                        .Bind(ValidatableEntry.ValidateCommandProperty, "ValidatePropertyCommand")
                         .Bind(ValidatableEntry.IsValidProperty, "Validation[Login]"),
                     new ValidatableEntry
                         {
@@ -26,12 +28,12 @@ namespace Xamarin.Forms.Sample.UI.Pages
                         }
                         .Bind(ValidatableEntry.ErrorTextProperty, "Validation[Password].Message")
                         .Bind(ValidatableEntry.TextProperty, "Password")
-                        .Bind(ValidatableEntry.ValidateCommandProperty, "Validation.NotifyPropertiesChangedCommand")
+                        .Bind(ValidatableEntry.ValidateCommandProperty, "ValidatePropertyCommand")
                         .Bind(ValidatableEntry.IsValidProperty, "Validation[Password]"),
                     new Button
                     {
                         Text = "Validate all"
-                    }.BindCommand("Validation.NotifyPropertiesChangedCommand", parameterPath: null)
+                    }.BindCommand("ValidateAllCommand", parameterPath: null)
                 }
             };
         }

@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\PropertiesValidation\PropertiesValidation.csproj" />
+    <ProjectReference Include="..\..\Validation\Validation.csproj" />
+    <ProjectReference Include="..\..\Filter\Filter.csproj" />
   </ItemGroup>
 </Project>

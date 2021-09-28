@@ -10,7 +10,7 @@ namespace Xamarin.Forms.Sample
         public App()
         {
             InitializeComponent();
-            MainPage = new PropertiesValidationPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

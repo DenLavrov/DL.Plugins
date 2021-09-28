@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace Xam.Plugin.Filter.Base
+namespace Filter.Base
 {
     public interface IFilter
     {

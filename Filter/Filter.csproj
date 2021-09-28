@@ -12,10 +12,10 @@
         <Description>Abstract filtering for Xamarin.Forms projects with MVVM structure
             Can be used by any project with c# lang</Description>
         <PackageVersion>1.0.2</PackageVersion>
+        <RootNamespace>Filter</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="PropertiesValidation.Core" Version="1.0.0" />
     </ItemGroup>
-
 </Project>

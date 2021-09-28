@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace PropertiesValidation.Base
+namespace Validation.Base
 {
     [AttributeUsage(AttributeTargets.Property)]
     public abstract class ValidationAttribute : Attribute
@@ -29,10 +29,9 @@ namespace PropertiesValidation.Base
             var customAttributes = properties.Where(x => IsDefined(x, typeof(ValidationAttribute)))
                 .ToDictionary(x => x.Name, info => info.GetCustomAttributes<ValidationAttribute>().ToList());
             if (!customAttributes.Any()) return;
-            validatable.Validation = new DynamicValuesDictionary<string, ValidationResult>();
             foreach (var (key, validationAttributes) in customAttributes)
             {
-                validatable.Validation.TryUpdate(key,
+                validatable.Validation?.TryUpdate(key,
                     () =>
                     {
                         var val = type.GetProperty(key)?.GetValue(validatable);
@@ -43,7 +42,7 @@ namespace PropertiesValidation.Base
                                     : type.GetProperty(validationAttribute.ParameterName)?.GetValue(validatable))
                         );
                         return firstIsNotValid == null
-                            ? new ValidationResult {IsValid = true}
+                            ? new ValidationResult { IsValid = true }
                             : new ValidationResult
                             {
                                 IsValid = false,
