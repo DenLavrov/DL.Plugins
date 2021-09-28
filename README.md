@@ -45,6 +45,8 @@ There are two extension methods Validate(string propertyName) and ValidateAll() 
 
 ```
 
+var validationResult = (Some class instance which implements IValidatable).Validate("PropertyName");
+
 ```
 
 You can access the result of validation like this.
