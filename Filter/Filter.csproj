@@ -13,6 +13,7 @@
             Can be used by any project with c# lang</Description>
         <PackageVersion>1.0.3</PackageVersion>
         <RootNamespace>Filter</RootNamespace>
+        <PackageId>Xam.Plugin.Filter</PackageId>
     </PropertyGroup>
 
     <ItemGroup>
