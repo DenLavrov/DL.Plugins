@@ -7,18 +7,15 @@ First thing is to implement IValidatable interface by the object which propertie
 
 public class BaseViewModel: IValidatable
     {
-        public DynamicValuesDictionary<string, ValidationResult> Validation { get; set; }
+        public DynamicValuesDictionary<string, ValidationResult> Validation { get; } =
+         new DynamicValuesDictionary<string, ValidationResult>();
 
         public BaseViewModel()
         {
             ((IValidatable)this).Init();
         }
-
-        protected ValidationResult Validate()
-        {
-            return ((IValidatable) this).ValidateAll();
-        }
     }
+    
     
 ```
 You can validate any property within validatable class by marking it with ValidationAttribute.
@@ -42,6 +39,11 @@ You can pass IEnumerable of PropertyNames, to validate a set of properties, or n
 ```
 
 Validation.NotifyOfPropertiesChanged.Execute("{PropertyName}");
+
+```
+There are two extension methods Validate(string propertyName) and ValidateAll() which return ValidationResult and trigger validation
+
+```
 
 ```
 
