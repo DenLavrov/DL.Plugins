@@ -5,12 +5,13 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>Denis Lavrov</Authors>
         <Description>Includes Command and DynamicDictionary</Description>
-        <PackageProjectUrl>https://github.com/DenLavrov/Xam.Plugin.Validation/tree/main/Core</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/DenLavrov/Xam.Plugin.Validation/tree/main/Core</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/DenLavrov/Xam.Plugins</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/DenLavrov/Xam.Plugins</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageTags>DynamicDictionary;Command;.Net;C#</PackageTags>
         <PackageId>PropertiesValidation.Core</PackageId>
+        <PackageVersion>1.0.1</PackageVersion>
     </PropertyGroup>
 
 </Project>
