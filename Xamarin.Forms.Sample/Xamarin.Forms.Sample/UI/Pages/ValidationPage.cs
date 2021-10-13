@@ -10,30 +10,32 @@ namespace Xamarin.Forms.Sample.UI.Pages
         {
             Title = "Validation";
             BindingContext = new ValidationViewModel();
+            Padding = 20;
             Content = new StackLayout
             {
+                Spacing = 20,
                 Children =
                 {
                     new ValidatableEntry
                         {
-                            ValidateCommandParameter = "Login"
+                            ValidateCommandParameter = nameof(ValidationViewModel.Login)
                         }
                         .Bind(ValidatableEntry.ErrorTextProperty, "Validation[Login].Message")
-                        .Bind(ValidatableEntry.TextProperty, "Login")
-                        .Bind(ValidatableEntry.ValidateCommandProperty, "ValidatePropertyCommand")
+                        .Bind(ValidatableEntry.TextProperty, nameof(ValidationViewModel.Login))
+                        .Bind(ValidatableEntry.ValidateCommandProperty, nameof(ValidationViewModel.ValidatePropertyCommand))
                         .Bind(ValidatableEntry.IsValidProperty, "Validation[Login]"),
                     new ValidatableEntry
                         {
-                            ValidateCommandParameter = "Password"
+                            ValidateCommandParameter = nameof(ValidationViewModel.Password)
                         }
                         .Bind(ValidatableEntry.ErrorTextProperty, "Validation[Password].Message")
-                        .Bind(ValidatableEntry.TextProperty, "Password")
-                        .Bind(ValidatableEntry.ValidateCommandProperty, "ValidatePropertyCommand")
+                        .Bind(ValidatableEntry.TextProperty, nameof(ValidationViewModel.Password))
+                        .Bind(ValidatableEntry.ValidateCommandProperty, nameof(ValidationViewModel.ValidatePropertyCommand))
                         .Bind(ValidatableEntry.IsValidProperty, "Validation[Password]"),
                     new Button
                     {
                         Text = "Validate all"
-                    }.BindCommand("ValidateAllCommand", parameterPath: null)
+                    }.BindCommand(nameof(ValidationViewModel.ValidateAllCommand), parameterPath: null)
                 }
             };
         }

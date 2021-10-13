@@ -7,7 +7,8 @@ namespace Validation.Implementations
         public int Length { get; }
 
         public MatchOrLessLengthValidationAttribute(int length, string parameterName = null, string errorMessage = null,
-            bool defaultValue = true) : base(parameterName, errorMessage, defaultValue)
+            bool defaultValue = true, string errorMessageKey = null) : base(parameterName, errorMessage, defaultValue,
+            errorMessageKey)
         {
             Length = length;
         }

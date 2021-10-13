@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using PropertiesValidation.Base;
@@ -9,9 +10,9 @@ namespace Validation.Base
     {
         public DynamicValuesDictionary<string, ValidationResult> Validation { get; }
 
-        public void Init()
+        public void Init(IDictionary<string, string> errorMessages = null)
         {
-            ValidationAttribute.SetFor(this);
+            ValidationAttribute.SetFor(this, errorMessages);
         }
     }
 }

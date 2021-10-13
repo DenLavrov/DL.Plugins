@@ -5,7 +5,8 @@ namespace Validation.Implementations
     public class ValueMultiplicationValidationAttribute : ValidationAttribute
     {
         public ValueMultiplicationValidationAttribute(string parameterName = null, string errorMessage = null,
-            bool defaultValue = true) : base(parameterName, errorMessage, defaultValue)
+            bool defaultValue = true, string errorMessageKey = null) : base(parameterName, errorMessage, defaultValue,
+            errorMessageKey)
         {
         }
 

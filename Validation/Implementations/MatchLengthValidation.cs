@@ -19,7 +19,9 @@ namespace Validation.Implementations
         public int MatchLength { get; }
 
         public MatchLengthValidationAttribute(Symbol[] allowedSymbols, int matchLength, string parameterName = null,
-            string errorMessage = null, bool defaultValue = true) : base(parameterName, errorMessage, defaultValue)
+            string errorMessage = null, bool defaultValue = true, string errorMessageKey = null) : base(parameterName,
+            errorMessage, defaultValue,
+            errorMessageKey)
         {
             AllowedSymbols = allowedSymbols;
             MatchLength = matchLength;

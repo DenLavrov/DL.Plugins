@@ -7,7 +7,8 @@ namespace Validation.Implementations
         public int MinLength { get; }
 
         public MinLengthValidationAttribute(int minLength, string parameterName = null, string errorMessage = null,
-            bool defaultValue = true) : base(parameterName, errorMessage, defaultValue)
+            bool defaultValue = true, string errorMessageKey = null) : base(parameterName, errorMessage, defaultValue,
+            errorMessageKey)
         {
             MinLength = minLength;
         }

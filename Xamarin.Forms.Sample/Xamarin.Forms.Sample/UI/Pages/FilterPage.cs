@@ -19,11 +19,11 @@ namespace Xamarin.Forms.Sample.UI.Pages
                         new Button
                         {
                             Text = "Apply filter"
-                        }.BindCommand("FilterCommand", parameterPath: null),
+                        }.BindCommand(nameof(FilterViewModel.FilterCommand), parameterPath: null),
                         new Button
                         {
                             Text = "Unapply filter"
-                        }.BindCommand("RemoveFilterCommand", parameterPath: null)
+                        }.BindCommand(nameof(FilterViewModel.RemoveFilterCommand), parameterPath: null)
                     }
                 }
             }.Bind(ListView.ItemsSourceProperty, "FilteredData[Persons]");

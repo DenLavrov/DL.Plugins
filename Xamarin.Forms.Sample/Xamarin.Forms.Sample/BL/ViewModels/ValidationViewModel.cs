@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Sample.BL.ViewModels
         public DynamicValuesDictionary<string, ValidationResult> Validation { get; } =
             new DynamicValuesDictionary<string, ValidationResult>();
         
-        [NotEmptyValidation("Login cannot be empty")]
+        [NotEmptyValidation(errorMessageKey: ValidationConsts.LoginIsEmptyValidationMessageKey)]
         [RegexValidation(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", errorMessage: "Regex error")]
         public string Login
         {
@@ -28,8 +28,8 @@ namespace Xamarin.Forms.Sample.BL.ViewModels
             set => Set(value);
         }
 
-        [NotEmptyValidation("Password cannot be empty")]
-        [MinLengthValidation(6, errorMessage: "Password has to be 6 letters long")]
+        [NotEmptyValidation(errorMessageKey: ValidationConsts.PassIsEmptyValidationMessageKey)]
+        [MinLengthValidation(6, errorMessageKey: ValidationConsts.PassLengthErrorValidationMessageKey)]
         public string Password
         {
             get => Get<string>();
@@ -40,7 +40,7 @@ namespace Xamarin.Forms.Sample.BL.ViewModels
         {
             ValidatePropertyCommand = new Command(ValidateProperty);
             ValidateAllCommand = new Command(ValidateAllProperties);
-            ((IValidatable)this).Init();
+            ((IValidatable)this).Init(ValidationConsts.ValidationMessages);
         }
 
         void ValidateAllProperties()
