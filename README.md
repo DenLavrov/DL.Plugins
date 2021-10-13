@@ -98,6 +98,21 @@ public class NotEmptyValidationAttribute: ValidationAttribute
 
 ```
 
+# Error messages from resource file
+
+```
+Each attribute has errorMessageKey parameter:
+
+[SomeValidation(errorMessageKey: Error message key)]
+
+Just provide 'IDictionary<string, string> errorMessages', whose keys then will be used as errorMessageKey parameter, to Init(errorMessages) method:
+
+((IValidatable)this).Init(new Dictionary<string, string>{
+{Error message key, Error message from resources}
+});
+
+```
+
 # Examples
 
 Usage with pure MVVM architecture can be found in samples
