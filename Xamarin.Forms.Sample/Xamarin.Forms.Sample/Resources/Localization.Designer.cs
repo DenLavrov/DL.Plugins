@@ -62,5 +62,11 @@ namespace Xamarin.Forms.Sample.Resources {
                 return ResourceManager.GetString("Pass_Length_Error_Message", resourceCulture);
             }
         }
+        
+        internal static string Wrong_Value_Error {
+            get {
+                return ResourceManager.GetString("Wrong_Value_Error", resourceCulture);
+            }
+        }
     }
 }

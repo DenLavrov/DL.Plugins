@@ -27,4 +27,7 @@
     <data name="Pass_Length_Error_Message" xml:space="preserve">
         <value>Password has to be 6 letters long</value>
     </data>
+    <data name="Wrong_Value_Error" xml:space="preserve">
+        <value>Value must be able to be divided by 100</value>
+    </data>
 </root>

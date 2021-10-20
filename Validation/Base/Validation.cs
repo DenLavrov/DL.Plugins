@@ -34,30 +34,34 @@ namespace Validation.Base
             var customAttributes = properties.Where(x => IsDefined(x, typeof(ValidationAttribute)))
                 .ToDictionary(x => x.Name, info => info.GetCustomAttributes<ValidationAttribute>().ToList());
             if (!customAttributes.Any()) return;
-            foreach (var (key, validationAttributes) in customAttributes)
+            foreach (var (propertyName, validationAttributes) in customAttributes)
             {
-                validatable.Validation?.TryUpdate(key,
+                validatable.Validation?.TryUpdate(propertyName,
                     () =>
                     {
-                        var valueToValidate = type.GetProperty(key)?.GetValue(validatable);
+                        var valueToValidate = type.GetProperty(propertyName)?.GetValue(validatable);
                         var firstIsNotValid = validationAttributes.FirstOrDefault(validationAttribute =>
-                            !validationAttribute.Validate(valueToValidate,
-                                string.IsNullOrEmpty(validationAttribute.ParameterName)
-                                    ? null
-                                    : type.GetProperty(validationAttribute.ParameterName)?.GetValue(validatable))
-                        );
+                        {
+                            var parameterPath = validationAttribute.ParameterName?.Split('.');
+                            if (!parameterPath?.Any() ?? true) return !validationAttribute.Validate(valueToValidate);
+                            var parameterValue = type.GetProperty(parameterPath[0])?.GetValue(validatable);
+                            foreach (var pathPart in parameterPath.Skip(1))
+                            {
+                                parameterValue = parameterValue?.GetType().GetProperty(pathPart)
+                                    ?.GetValue(parameterValue);
+                            }
+                            return !validationAttribute.Validate(valueToValidate, parameterValue);
+                        });
                         if (firstIsNotValid == null)
-                            return new ValidationResult { IsValid = true };
+                            return true;
                         if (errorMessages != null && !string.IsNullOrEmpty(firstIsNotValid.ErrorMessageKey) &&
                             errorMessages.TryGetValue(firstIsNotValid.ErrorMessageKey, out var errorMessage))
                             return new ValidationResult
                             {
-                                IsValid = false,
                                 Message = errorMessage
                             };
                         return new ValidationResult
                         {
-                            IsValid = false,
                             Message = firstIsNotValid.ErrorMessage
                         };
                     },

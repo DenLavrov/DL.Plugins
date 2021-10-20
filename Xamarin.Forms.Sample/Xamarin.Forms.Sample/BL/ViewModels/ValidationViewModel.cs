@@ -8,6 +8,7 @@ using Validation.Base;
 using Validation.Extensions;
 using Validation.Implementations;
 using Xamarin.Forms;
+using Xamarin.Forms.Sample.BL.Models;
 using Xamarin.Forms.Sample.Helpers;
 
 namespace Xamarin.Forms.Sample.BL.ViewModels
@@ -36,6 +37,22 @@ namespace Xamarin.Forms.Sample.BL.ViewModels
             set => Set(value);
         }
 
+        [ValueMultiplicationValidation("Wallet.MoneyAmount.Amount")]
+        public int? Value
+        {
+            get => Get<int?>();
+            set => Set(value);
+        }
+        
+        public Wallet Wallet { get; } = new Wallet
+        {
+            MoneyAmount = new MoneyAmount
+            {
+                Type = "RUB",
+                Amount = 100
+            }
+        };
+        
         public ValidationViewModel()
         {
             ValidatePropertyCommand = new Command(ValidateProperty);
