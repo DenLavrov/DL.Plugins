@@ -9,11 +9,11 @@ namespace Validation.Base
     public abstract class ValidationAttribute : Attribute
     {
         public bool DefaultValue { get; }
-        
+
         public string ErrorMessage { get; }
-        
+
         public string ErrorMessageKey { get; }
-        
+
         public string ParameterName { get; }
 
         protected ValidationAttribute(string parameterName = null, string errorMessage = null, bool defaultValue = true,
@@ -49,24 +49,27 @@ namespace Validation.Base
                                 validationResult = validationAttribute.Validate(valueToValidate);
                                 return !validationResult;
                             }
+
                             var parameterValue = type.GetProperty(parameterPath[0])?.GetValue(validatable);
                             foreach (var pathPart in parameterPath.Skip(1))
                                 parameterValue = parameterValue?.GetType().GetProperty(pathPart)
                                     ?.GetValue(parameterValue);
-                            
+
                             validationResult = validationAttribute.Validate(valueToValidate, parameterValue);
                             return !validationResult;
                         });
                         if (firstIsNotValid == null)
                             return true;
 
+                        if (!string.IsNullOrEmpty(validationResult?.Message))
+                            return validationResult;
                         if (errorMessages != null && !string.IsNullOrEmpty(firstIsNotValid.ErrorMessageKey) &&
                             errorMessages.TryGetValue(firstIsNotValid.ErrorMessageKey, out var errorMessage))
-                            validationResult.Message ??= errorMessage;
-                        else 
-                            validationResult.Message ??= firstIsNotValid.ErrorMessage;
-
-                        return validationResult;
+                        {
+                            return ValidationResult.Invalid(errorMessage);
+                        }
+                        
+                        return ValidationResult.Invalid(firstIsNotValid.ErrorMessage);
                     },
                     validationAttributes.All(x => x.DefaultValue));
             }
