@@ -14,7 +14,7 @@ namespace Validation.Implementations
             Regex = regex;
         }
 
-        public override bool Validate(object input, object parameter = null)
+        public override ValidationResult Validate(object input, object parameter = null)
         {
             var value = input?.ToString();
             return !string.IsNullOrEmpty(value) && new Regex(Regex).IsMatch(value);

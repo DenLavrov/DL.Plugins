@@ -13,7 +13,7 @@ namespace Validation.Implementations
             MaxValue = maxValue;
         }
 
-        public override bool Validate(object input, object parameter = null)
+        public override ValidationResult Validate(object input, object parameter = null)
         {
             var value = input?.ToString();
             return float.TryParse(value, out var number) && number <= MaxValue;

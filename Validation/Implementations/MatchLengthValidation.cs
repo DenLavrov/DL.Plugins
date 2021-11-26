@@ -27,7 +27,7 @@ namespace Validation.Implementations
             MatchLength = matchLength;
         }
 
-        public override bool Validate(object input, object parameter = null)
+        public override ValidationResult Validate(object input, object parameter = null)
         {
             var value = input?.ToString();
             return value?.Length == MatchLength && value.All(x => AllowedSymbols.Contain(x));

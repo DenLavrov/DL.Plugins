@@ -1,4 +1,6 @@
-﻿namespace Validation.Implementations
+﻿using Validation.Base;
+
+namespace Validation.Implementations
 {
     public class MatchLengthOrEmptyValidationAttribute : MatchLengthValidationAttribute
     {
@@ -9,7 +11,7 @@
         {
         }
 
-        public override bool Validate(object input, object parameter = null)
+        public override ValidationResult Validate(object input, object parameter = null)
         {
             var val = input?.ToString();
             return string.IsNullOrEmpty(val) || base.Validate(val, parameter);

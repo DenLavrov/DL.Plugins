@@ -13,7 +13,7 @@ namespace Validation.Implementations
             MinLength = minLength;
         }
 
-        public override bool Validate(object input, object parameter = null)
+        public override ValidationResult Validate(object input, object parameter = null)
         {
             var value = input?.ToString();
             return value?.Length >= MinLength;

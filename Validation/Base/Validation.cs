@@ -25,7 +25,7 @@ namespace Validation.Base
             ErrorMessageKey = errorMessageKey;
         }
 
-        public abstract bool Validate(object input, object parameter = null);
+        public abstract ValidationResult Validate(object input, object parameter = null);
 
         public static void SetFor(IValidatable validatable, IDictionary<string, string> errorMessages = null)
         {
@@ -40,30 +40,33 @@ namespace Validation.Base
                     () =>
                     {
                         var valueToValidate = type.GetProperty(propertyName)?.GetValue(validatable);
+                        ValidationResult validationResult = null;
                         var firstIsNotValid = validationAttributes.FirstOrDefault(validationAttribute =>
                         {
                             var parameterPath = validationAttribute.ParameterName?.Split('.');
-                            if (!parameterPath?.Any() ?? true) return !validationAttribute.Validate(valueToValidate);
+                            if (!parameterPath?.Any() ?? true)
+                            {
+                                validationResult = validationAttribute.Validate(valueToValidate);
+                                return !validationResult;
+                            }
                             var parameterValue = type.GetProperty(parameterPath[0])?.GetValue(validatable);
                             foreach (var pathPart in parameterPath.Skip(1))
-                            {
                                 parameterValue = parameterValue?.GetType().GetProperty(pathPart)
                                     ?.GetValue(parameterValue);
-                            }
-                            return !validationAttribute.Validate(valueToValidate, parameterValue);
+                            
+                            validationResult = validationAttribute.Validate(valueToValidate, parameterValue);
+                            return !validationResult;
                         });
                         if (firstIsNotValid == null)
                             return true;
+
                         if (errorMessages != null && !string.IsNullOrEmpty(firstIsNotValid.ErrorMessageKey) &&
                             errorMessages.TryGetValue(firstIsNotValid.ErrorMessageKey, out var errorMessage))
-                            return new ValidationResult
-                            {
-                                Message = errorMessage
-                            };
-                        return new ValidationResult
-                        {
-                            Message = firstIsNotValid.ErrorMessage
-                        };
+                            validationResult.Message ??= errorMessage;
+                        else 
+                            validationResult.Message ??= firstIsNotValid.ErrorMessage;
+
+                        return validationResult;
                     },
                     validationAttributes.All(x => x.DefaultValue));
             }

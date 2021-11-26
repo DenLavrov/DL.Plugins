@@ -10,7 +10,7 @@ namespace Validation.Implementations
         {
         }
 
-        public override bool Validate(object input, object parameter = null)
+        public override ValidationResult Validate(object input, object parameter = null)
         {
             var value = input?.ToString();
             if (parameter is int divider)
