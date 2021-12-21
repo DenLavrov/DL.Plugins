@@ -27,7 +27,7 @@ namespace Validation.Base
 
         public abstract ValidationResult Validate(object input, object parameter = null);
 
-        public static void SetFor(IValidatable validatable, IDictionary<string, string> errorMessages = null)
+        public static void SetFor(IValidatable validatable, IReadOnlyDictionary<string, string> errorMessages = null)
         {
             var type = validatable.GetType();
             var properties = type.GetProperties();
@@ -65,10 +65,8 @@ namespace Validation.Base
                             return validationResult;
                         if (errorMessages != null && !string.IsNullOrEmpty(firstIsNotValid.ErrorMessageKey) &&
                             errorMessages.TryGetValue(firstIsNotValid.ErrorMessageKey, out var errorMessage))
-                        {
                             return ValidationResult.Invalid(errorMessage);
-                        }
-                        
+
                         return ValidationResult.Invalid(firstIsNotValid.ErrorMessage);
                     },
                     validationAttributes.All(x => x.DefaultValue));

@@ -10,7 +10,7 @@ namespace Validation.Base
     {
         public DynamicValuesDictionary<string, ValidationResult> Validation { get; }
 
-        public void Init(IDictionary<string, string> errorMessages = null)
+        public void Init(IReadOnlyDictionary<string, string> errorMessages = null)
         {
             ValidationAttribute.SetFor(this, errorMessages);
         }

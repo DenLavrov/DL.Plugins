@@ -10,12 +10,12 @@ namespace Xamarin.Forms.Sample
         public const string PassLengthErrorValidationMessageKey = nameof(PassLengthErrorValidationMessageKey);
         public const string PassIsEmptyValidationMessageKey = nameof(PassIsEmptyValidationMessageKey);
 
-        public static readonly ReadOnlyDictionary<string, string> ValidationMessages =
-            new ReadOnlyDictionary<string, string>(new Dictionary<string, string>
+        public static readonly IReadOnlyDictionary<string, string> ValidationMessages =
+            new Dictionary<string, string>
             {
-                {LoginIsEmptyValidationMessageKey, Localization.Login_Is_Empty_Error_Message},
-                {PassIsEmptyValidationMessageKey, Localization.Pass_Is_Empty_Error_Message},
-                {PassLengthErrorValidationMessageKey, Localization.Pass_Length_Error_Message}
-            });
+                { LoginIsEmptyValidationMessageKey, Localization.Login_Is_Empty_Error_Message },
+                { PassIsEmptyValidationMessageKey, Localization.Pass_Is_Empty_Error_Message },
+                { PassLengthErrorValidationMessageKey, Localization.Pass_Length_Error_Message }
+            };
     }
 }

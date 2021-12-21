@@ -33,7 +33,8 @@ namespace Validation.Extensions
                 return null;
             if (validatable.Validation.NotifyPropertiesChangedCommand.CanExecute(null))
                 validatable.Validation.NotifyPropertiesChangedCommand.Execute(propertyName);
-            return validatable.Validation.FirstOrDefault(x => x.Key == propertyName).Value;
+            validatable.Validation.TryGetValue(propertyName, out var value);
+            return value;
         }
         
         public static ValidationResult ValidateAll(this IValidatable validatable)
