@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
-namespace PropertiesValidation.Base
+namespace Core
 {
     public class DynamicValuesDictionary<TKey, TValue>: Dictionary<TKey, TValue>, INotifyPropertyChanged
     {
@@ -61,7 +60,7 @@ namespace PropertiesValidation.Base
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
