@@ -105,7 +105,7 @@ Each attribute has errorMessageKey parameter:
 
 [SomeValidation(errorMessageKey: Error message key)]
 
-Just provide 'IDictionary<string, string> errorMessages', whose keys then will be used as errorMessageKey parameter, to Init(errorMessages) method:
+Just provide 'IReadOnlyDictionary<string, string> errorMessages', whose keys then will be used as errorMessageKey parameter, to Init(errorMessages) method:
 
 ((IValidatable)this).Init(new Dictionary<string, string>{
 {Error message key, Error message from resources}
