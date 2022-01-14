@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Input;
+using Core;
 using Filter;
 using Filter.Base;
-using PropertiesValidation.Base;
 using Xamarin.Forms.Sample.BL.Models;
 using Xamarin.Forms.Sample.BL.Models.Filters;
 using Xamarin.Forms.Sample.Helpers;

@@ -11,12 +11,12 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Description>Abstract filtering for Xamarin.Forms projects with MVVM structure
             Can be used by any project with c# lang</Description>
-        <PackageVersion>1.0.3</PackageVersion>
+        <PackageVersion>1.0.4</PackageVersion>
         <RootNamespace>Filter</RootNamespace>
         <PackageId>Xam.Plugin.Filter</PackageId>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="PropertiesValidation.Core" Version="1.0.0" />
+        <PackageReference Include="PropertiesValidation.Core" Version="1.0.2" />
     </ItemGroup>
 </Project>

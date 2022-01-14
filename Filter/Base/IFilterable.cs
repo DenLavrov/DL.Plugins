@@ -1,6 +1,5 @@
-using System;
 using System.Collections;
-using PropertiesValidation.Base;
+using Core;
 
 namespace Filter.Base
 {

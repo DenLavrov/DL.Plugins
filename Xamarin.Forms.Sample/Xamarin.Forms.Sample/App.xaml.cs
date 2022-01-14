@@ -1,7 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Sample.UI.Pages;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms.Sample.UI.Pages;
 
 namespace Xamarin.Forms.Sample
 {

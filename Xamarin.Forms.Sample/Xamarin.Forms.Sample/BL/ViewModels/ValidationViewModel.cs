@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Input;
-using PropertiesValidation.Base;
+﻿using System.Windows.Input;
+using Core;
 using Validation.Base;
 using Validation.Extensions;
 using Validation.Implementations;
-using Xamarin.Forms;
 using Xamarin.Forms.Sample.BL.Models;
 using Xamarin.Forms.Sample.Helpers;
 
@@ -18,8 +13,7 @@ namespace Xamarin.Forms.Sample.BL.ViewModels
         public ICommand ValidatePropertyCommand { get; }
         public ICommand ValidateAllCommand { get; }
         
-        public DynamicValuesDictionary<string, ValidationResult> Validation { get; } =
-            new DynamicValuesDictionary<string, ValidationResult>();
+        public ValidationList Validation { get; } = new ValidationList();
         
         [NotEmptyValidation(errorMessageKey: ValidationConsts.LoginIsEmptyValidationMessageKey)]
         [RegexValidation(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", errorMessage: "Regex error")]
