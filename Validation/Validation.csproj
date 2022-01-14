@@ -14,12 +14,12 @@ Can be used by any project with c# lang</Description>
       <PackageProjectUrl>https://github.com/DenLavrov/Xam.Plugins</PackageProjectUrl>
       <RepositoryUrl>https://github.com/DenLavrov/Xam.Plugins</RepositoryUrl>
       <RepositoryType>git</RepositoryType>
-      <PackageVersion>1.1.11</PackageVersion>
+      <PackageVersion>1.1.12</PackageVersion>
       <RootNamespace>Validation</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PropertiesValidation.Core" Version="1.0.0" />
+    <PackageReference Include="PropertiesValidation.Core" Version="1.0.2" />
   </ItemGroup>
 
 </Project>
