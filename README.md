@@ -7,8 +7,7 @@ First thing is to implement IValidatable interface by the object which propertie
 
 public class BaseViewModel: IValidatable
     {
-        public DynamicValuesDictionary<string, ValidationResult> Validation { get; } =
-         new DynamicValuesDictionary<string, ValidationResult>();
+        public ValidationList Validation { get; } = new ValidationList();
 
         public BaseViewModel()
         {
