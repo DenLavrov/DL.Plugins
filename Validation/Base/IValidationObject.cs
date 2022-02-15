@@ -6,7 +6,7 @@ namespace Validation.Base
 {
     public interface IValidatable
     {
-        void Validate();
+        bool Validate();
     }
     
     public interface IValidationObject<T>: IValidatable

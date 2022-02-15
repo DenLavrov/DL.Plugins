@@ -11,11 +11,12 @@ namespace Xamarin.Forms.Sample.BL.Models
 {
     public class BindableValidationObject<T>: ValidationObject<T>, INotifyPropertyChanged
     {
-        public override void Validate()
+        public override bool Validate()
         {
-            base.Validate();
+            var isValid = base.Validate();
             OnPropertyChanged(nameof(Message));
             OnPropertyChanged(nameof(IsValid));
+            return isValid;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

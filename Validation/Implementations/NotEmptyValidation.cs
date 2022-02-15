@@ -8,7 +8,9 @@ namespace Validation.Implementations
 
         public ValidationResult Validate(string value)
         {
-            return !string.IsNullOrWhiteSpace(value) || !string.IsNullOrEmpty(value) ? ValidationResult.Valid() : ValidationResult.Invalid(Message);
+            return !string.IsNullOrWhiteSpace(value) || !string.IsNullOrEmpty(value)
+                ? ValidationResult.Valid()
+                : ValidationResult.Invalid(Message);
         }
     }
 }

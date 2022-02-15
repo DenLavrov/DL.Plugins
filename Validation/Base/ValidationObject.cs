@@ -11,7 +11,7 @@ namespace Validation.Base
         public string DefaultMessage { get; set; }
         public List<IValidationRule<T>> ValidationRules { get; } = new List<IValidationRule<T>>();
         
-        public virtual void Validate()
+        public virtual bool Validate()
         {
             string message = null;
             var isValid = ValidationRules.All(x =>
@@ -22,12 +22,10 @@ namespace Validation.Base
                 return validationResult;
             });
             if (isValid)
-            {
-                IsValid = true;
-                return;
-            }
-            IsValid = false;
+                return IsValid = true;
+            
             Message = message ?? DefaultMessage;
+            return IsValid = false;
         }
 
         public static implicit operator T(ValidationObject<T> validationObject) => validationObject.Value;
