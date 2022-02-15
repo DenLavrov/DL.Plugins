@@ -1,21 +1,23 @@
-﻿using Validation.Base;
+﻿using System;
+using Validation.Base;
 
 namespace Validation.Implementations
 {
-    public class ValueMultiplicationValidationAttribute : ValidationAttribute
+    public class ValueMultiplicationValidationRule : IValidationRule<int?>
     {
-        public ValueMultiplicationValidationAttribute(string parameterName = null, string errorMessage = null,
-            bool defaultValue = true, string errorMessageKey = null) : base(parameterName, errorMessage, defaultValue,
-            errorMessageKey)
+        public Func<int> GetDivider { get; }
+        
+        public ValueMultiplicationValidationRule(Func<int> getDivider)
         {
+            GetDivider = getDivider;
         }
 
-        public override ValidationResult Validate(object input, object parameter = null)
+        public string Message { get; set; }
+
+        public ValidationResult Validate(int? value)
         {
-            var value = input?.ToString();
-            if (parameter is int divider)
-                return int.TryParse(value, out var price) && price % divider == 0;
-            return false;
+            var divider = GetDivider();
+            return value != null && divider != 0 && value % divider == 0 ? ValidationResult.Valid() : ValidationResult.Invalid(Message);
         }
     }
 }

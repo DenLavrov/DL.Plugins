@@ -7,16 +7,18 @@
         <PackageProjectUrl>https://github.com/DenLavrov/Xam.Plugins</PackageProjectUrl>
         <RepositoryUrl>https://github.com/DenLavrov/Xam.Plugins</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageTags>Filter;Filters;Xamarin.Forms;MVVM;Android;iOS;Xamarin</PackageTags>
+        <PackageTags>Filtering;Filter;Filters;Xamarin.Forms;MVVM;Android;iOS;Xamarin;.NET;C#;FilterableObject;FilterableObject&lt;T&gt;;IFilter;IFilter&lt;T&gt;</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Description>Abstract filtering for Xamarin.Forms projects with MVVM structure
-            Can be used by any project with c# lang</Description>
-        <PackageVersion>1.0.4</PackageVersion>
+        <Description>Filterable object for .net projects
+Contains filtered and original value
+A list of filters can be used</Description>
+        <PackageVersion>1.1.0</PackageVersion>
         <RootNamespace>Filter</RootNamespace>
         <PackageId>Xam.Plugin.Filter</PackageId>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="PropertiesValidation.Core" Version="1.0.2" />
+      <Compile Remove="Base\IFilterable.cs" />
+      <Compile Remove="FilterExtensions.cs" />
     </ItemGroup>
 </Project>

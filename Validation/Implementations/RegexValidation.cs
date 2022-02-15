@@ -3,21 +3,20 @@ using Validation.Base;
 
 namespace Validation.Implementations
 {
-    public class RegexValidationAttribute : ValidationAttribute
+    public class RegexValidationRule : IValidationRule<string>
     {
         public string Regex { get; }
 
-        public RegexValidationAttribute(string regex, string parameterName = null, string errorMessage = null,
-            bool defaultValue = true, string errorMessageKey = null) : base(parameterName, errorMessage, defaultValue,
-            errorMessageKey)
+        public RegexValidationRule(string regex)
         {
             Regex = regex;
         }
 
-        public override ValidationResult Validate(object input, object parameter = null)
+        public string Message { get; set; }
+
+        public virtual ValidationResult Validate(string value)
         {
-            var value = input?.ToString();
-            return !string.IsNullOrEmpty(value) && new Regex(Regex).IsMatch(value);
+            return !string.IsNullOrEmpty(value) && new Regex(Regex).IsMatch(value) ? ValidationResult.Valid() : ValidationResult.Invalid(Message);
         }
     }
 }

@@ -4,7 +4,7 @@ using Validation.Extensions;
 
 namespace Validation.Implementations
 {
-    public class MatchLengthValidationAttribute: ValidationAttribute
+    public class MatchLengthValidationRule: IValidationRule<string>
     {
         public enum Symbol: byte
         {
@@ -18,19 +18,19 @@ namespace Validation.Implementations
 
         public int MatchLength { get; }
 
-        public MatchLengthValidationAttribute(Symbol[] allowedSymbols, int matchLength, string parameterName = null,
-            string errorMessage = null, bool defaultValue = true, string errorMessageKey = null) : base(parameterName,
-            errorMessage, defaultValue,
-            errorMessageKey)
+        public MatchLengthValidationRule(Symbol[] allowedSymbols, int matchLength)
         {
             AllowedSymbols = allowedSymbols;
             MatchLength = matchLength;
         }
 
-        public override ValidationResult Validate(object input, object parameter = null)
+        public string Message { get; set; }
+
+        public virtual ValidationResult Validate(string value)
         {
-            var value = input?.ToString();
-            return value?.Length == MatchLength && value.All(x => AllowedSymbols.Contain(x));
+            return value?.Length == MatchLength && value.All(x => AllowedSymbols.Contain(x))
+                ? ValidationResult.Valid()
+                : ValidationResult.Invalid(Message);
         }
     }
 }

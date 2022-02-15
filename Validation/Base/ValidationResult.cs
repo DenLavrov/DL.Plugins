@@ -1,25 +1,21 @@
 namespace Validation.Base
 {
-    public class ValidationResult
+    public readonly struct ValidationResult
     {
-        public bool IsValid { get; private set; }
+        public bool IsValid { get; }
         
-        public string Message { get; private set; }
-        
-        static ValidationResult ValidResult { get; } = new ValidationResult
-        {
-            IsValid = true
-        };
+        public string Message { get; }
 
-        static ValidationResult InvalidResult { get; } = new ValidationResult
+        ValidationResult(bool isValid, string message = null)
         {
-            IsValid = false
-        };
-
-        ValidationResult()
-        {
+            IsValid = isValid;
+            Message = message;
         }
 
+        static ValidationResult ValidResult { get; } = new ValidationResult(true);
+        
+        static ValidationResult InvalidResult { get; } = new ValidationResult(false);
+        
         public static implicit operator bool(ValidationResult validationResult) => validationResult.IsValid;
 
         public static implicit operator ValidationResult(bool isValid) => isValid ? Valid() : Invalid();
@@ -28,10 +24,6 @@ namespace Validation.Base
 
         public static ValidationResult Invalid(string errorMessage = null) => string.IsNullOrEmpty(errorMessage)
             ? InvalidResult
-            : new ValidationResult
-            {
-                IsValid = false,
-                Message = errorMessage
-            };
+            : new ValidationResult(false, errorMessage);
     }
 }

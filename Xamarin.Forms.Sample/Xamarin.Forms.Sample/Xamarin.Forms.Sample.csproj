@@ -32,5 +32,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Localization.resx</DependentUpon>
     </Compile>
+    <Compile Remove="ValidationConsts.cs" />
   </ItemGroup>
 </Project>

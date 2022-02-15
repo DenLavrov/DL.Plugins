@@ -2,21 +2,20 @@
 
 namespace Validation.Implementations
 {
-    public class MatchOrLessLengthValidationAttribute : ValidationAttribute
+    public class MatchOrLessLengthValidationRule : IValidationRule<string>
     {
         public int Length { get; }
 
-        public MatchOrLessLengthValidationAttribute(int length, string parameterName = null, string errorMessage = null,
-            bool defaultValue = true, string errorMessageKey = null) : base(parameterName, errorMessage, defaultValue,
-            errorMessageKey)
+        public MatchOrLessLengthValidationRule(int length)
         {
             Length = length;
         }
 
-        public override ValidationResult Validate(object input, object parameter = null)
+        public string Message { get; set; }
+
+        public ValidationResult Validate(string value)
         {
-            var value = input?.ToString();
-            return value == null || value.Length <= Length;
+            return value == null || value.Length <= Length ? ValidationResult.Valid() : ValidationResult.Invalid(Message);
         }
     }
 }

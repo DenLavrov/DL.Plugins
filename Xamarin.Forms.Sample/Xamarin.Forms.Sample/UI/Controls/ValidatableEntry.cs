@@ -59,7 +59,13 @@ namespace Xamarin.Forms.Sample.UI.Controls
             set => SetValue(ValidateCommandProperty, value);
         }
 
-        public object ValidateCommandParameter { get; set; }
+        public static readonly BindableProperty ValidateCommandParameterProperty = BindableProperty.Create(nameof(ValidateCommandParameter), typeof(object), typeof(ValidatableEntry));
+
+        public object ValidateCommandParameter
+        {
+            get => GetValue(ValidateCommandParameterProperty);
+            set => SetValue(ValidateCommandParameterProperty, value);
+        }
 
         readonly NoUnderlineEntry _entry;
         readonly BoxView _underline;

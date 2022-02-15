@@ -2,21 +2,20 @@
 
 namespace Validation.Implementations
 {
-    public class MinLengthValidationAttribute : ValidationAttribute
+    public class MinLengthValidationRule : IValidationRule<string>
     {
         public int MinLength { get; }
 
-        public MinLengthValidationAttribute(int minLength, string parameterName = null, string errorMessage = null,
-            bool defaultValue = true, string errorMessageKey = null) : base(parameterName, errorMessage, defaultValue,
-            errorMessageKey)
+        public MinLengthValidationRule(int minLength)
         {
             MinLength = minLength;
         }
 
-        public override ValidationResult Validate(object input, object parameter = null)
+        public string Message { get; set; }
+
+        public ValidationResult Validate(string value)
         {
-            var value = input?.ToString();
-            return value?.Length >= MinLength;
+            return value?.Length >= MinLength ? ValidationResult.Valid() : ValidationResult.Invalid(Message);
         }
     }
 }

@@ -1,9 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Filter.Base
 {
-    public interface IFilter
+    public interface IFilter<T>
     {
-        IEnumerable Apply(IEnumerable data);
+        IEnumerable<T> Apply(IEnumerable<T> data);
     }
 }

@@ -2,18 +2,13 @@
 
 namespace Validation.Implementations
 {
-    public class NotEmptyValidationAttribute : ValidationAttribute
+    public class NotEmptyValidationRule : IValidationRule<string>
     {
-        public NotEmptyValidationAttribute(string parameterName = null, string errorMessage = null,
-            bool defaultValue = true, string errorMessageKey = null) : base(parameterName, errorMessage, defaultValue,
-            errorMessageKey)
-        {
-        }
+        public string Message { get; set; }
 
-        public override ValidationResult Validate(object input, object parameter = null)
+        public ValidationResult Validate(string value)
         {
-            var value = input?.ToString();
-            return !string.IsNullOrWhiteSpace(value) || !string.IsNullOrEmpty(value);
+            return !string.IsNullOrWhiteSpace(value) || !string.IsNullOrEmpty(value) ? ValidationResult.Valid() : ValidationResult.Invalid(Message);
         }
     }
 }

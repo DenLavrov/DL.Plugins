@@ -2,19 +2,15 @@
 
 namespace Validation.Implementations
 {
-    public class MatchOrEmptyValidationAttribute : RegexValidationAttribute
+    public class MatchOrEmptyValidationRule : RegexValidationRule
     {
-        public MatchOrEmptyValidationAttribute(string regex, string parameterName = null, string errorMessage = null,
-            bool defaultValue = true, string errorMessageKey = null) : base(regex, errorMessage, parameterName,
-            defaultValue,
-            errorMessageKey)
+        public MatchOrEmptyValidationRule(string regex) : base(regex)
         {
         }
 
-        public override ValidationResult Validate(object input, object parameter = null)
+        public override ValidationResult Validate(string value)
         {
-            var value = input?.ToString();
-            return string.IsNullOrEmpty(value) || base.Validate(value, parameter);
+            return string.IsNullOrEmpty(value) || base.Validate(value);
         }
     }
 }

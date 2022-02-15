@@ -1,43 +1,65 @@
 ﻿using System.Windows.Input;
-using Core;
 using Validation.Base;
 using Validation.Extensions;
 using Validation.Implementations;
 using Xamarin.Forms.Sample.BL.Models;
 using Xamarin.Forms.Sample.Helpers;
+using Xamarin.Forms.Sample.Resources;
 
 namespace Xamarin.Forms.Sample.BL.ViewModels
 {
-    public class ValidationViewModel: Bindable, IValidatable
+    public class ValidationViewModel: Bindable
     {
-        public ICommand ValidatePropertyCommand { get; }
+        public ICommand ValidateCommand { get; }
         public ICommand ValidateAllCommand { get; }
-        
-        public ValidationList Validation { get; } = new ValidationList();
-        
-        [NotEmptyValidation(errorMessageKey: ValidationConsts.LoginIsEmptyValidationMessageKey)]
-        [RegexValidation(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", errorMessage: "Regex error")]
-        public string Login
+
+        public IValidationObject<string> Login
         {
-            get => Get<string>();
+            get => Get(new BindableValidationObject<string>
+            {
+                ValidationRules =
+                {
+                    new NotEmptyValidationRule { Message = Localization.Login_Is_Empty_Error_Message },
+                    new RegexValidationRule(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")
+                    {
+                        Message = "Regex error"
+                    }
+                }
+            });
+            set => Set(value);
+        }
+        
+        public IValidationObject<string> Password
+        {
+            get => Get(new BindableValidationObject<string>
+            {
+                ValidationRules =
+                {
+                    new NotEmptyValidationRule
+                    {
+                        Message = Localization.Pass_Is_Empty_Error_Message
+                    },
+                    new MinLengthValidationRule(6)
+                    {
+                        Message = Localization.Pass_Length_Error_Message
+                    }
+                }
+            });
             set => Set(value);
         }
 
-        [NotEmptyValidation(errorMessageKey: ValidationConsts.PassIsEmptyValidationMessageKey)]
-        [MinLengthValidation(6, errorMessageKey: ValidationConsts.PassLengthErrorValidationMessageKey)]
-        public string Password
+        public IValidationObject<int?> Value
         {
-            get => Get<string>();
+            get => Get(new BindableValidationObject<int?>
+            {
+                ValidationRules =
+                {
+                    new ValueMultiplicationValidationRule(() => Wallet.MoneyAmount.Amount)
+                }
+            });
             set => Set(value);
         }
 
-        [ValueMultiplicationValidation("Wallet.MoneyAmount.Amount")]
-        public int? Value
-        {
-            get => Get<int?>();
-            set => Set(value);
-        }
-        
         public Wallet Wallet { get; } = new Wallet
         {
             MoneyAmount = new MoneyAmount
@@ -49,19 +71,20 @@ namespace Xamarin.Forms.Sample.BL.ViewModels
         
         public ValidationViewModel()
         {
-            ValidatePropertyCommand = new Command(ValidateProperty);
+            ValidateCommand = new Command<IValidatable>(Validate);
             ValidateAllCommand = new Command(ValidateAllProperties);
-            ((IValidatable)this).Init(ValidationConsts.ValidationMessages);
         }
 
         void ValidateAllProperties()
         {
-            this.ValidateAll();
+            Login.Validate();
+            Password.Validate();
+            Value.Validate();
         }
 
-        void ValidateProperty(object obj)
+        void Validate(IValidatable obj)
         {
-            this.Validate(obj?.ToString());
+            obj.Validate();
         }
     }
 }

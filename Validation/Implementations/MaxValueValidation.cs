@@ -2,21 +2,20 @@
 
 namespace Validation.Implementations
 {
-    public class MaxValueValidationAttribute : ValidationAttribute
+    public class MaxValueValidationRule : IValidationRule<float>
     {
         public float MaxValue { get; }
 
-        public MaxValueValidationAttribute(float maxValue, string parameterName = null, string errorMessage = null,
-            bool defaultValue = true, string errorMessageKey = null) : base(parameterName, errorMessage, defaultValue,
-            errorMessageKey)
+        public MaxValueValidationRule(float maxValue)
         {
             MaxValue = maxValue;
         }
 
-        public override ValidationResult Validate(object input, object parameter = null)
+        public string Message { get; set; }
+
+        public ValidationResult Validate(float value)
         {
-            var value = input?.ToString();
-            return float.TryParse(value, out var number) && number <= MaxValue;
+            return value <= MaxValue ? ValidationResult.Valid() : ValidationResult.Invalid(Message);
         }
     }
 }

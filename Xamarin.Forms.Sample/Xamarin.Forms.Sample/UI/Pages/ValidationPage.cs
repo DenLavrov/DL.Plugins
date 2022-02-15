@@ -17,30 +17,26 @@ namespace Xamarin.Forms.Sample.UI.Pages
                 Spacing = 20,
                 Children =
                 {
+                    new ValidatableEntry()
+                        .Bind(ValidatableEntry.ErrorTextProperty, "Login.Message")
+                        .Bind(ValidatableEntry.TextProperty, "Login.Value")
+                        .Bind(ValidatableEntry.ValidateCommandProperty, nameof(ValidationViewModel.ValidateCommand))
+                        .Bind(ValidatableEntry.ValidateCommandParameterProperty, nameof(ValidationViewModel.Login))
+                        .Bind(ValidatableEntry.IsValidProperty, "Login.IsValid"),
+                    new ValidatableEntry()
+                        .Bind(ValidatableEntry.ErrorTextProperty, "Password.Message")
+                        .Bind(ValidatableEntry.TextProperty, "Password.Value")
+                        .Bind(ValidatableEntry.ValidateCommandProperty, nameof(ValidationViewModel.ValidateCommand))
+                        .Bind(ValidatableEntry.ValidateCommandParameterProperty, nameof(ValidationViewModel.Password))
+                        .Bind(ValidatableEntry.IsValidProperty, "Password.IsValid"),
                     new ValidatableEntry
                         {
-                            ValidateCommandParameter = nameof(ValidationViewModel.Login)
-                        }
-                        .Bind(ValidatableEntry.ErrorTextProperty, "Validation[Login].Message")
-                        .Bind(ValidatableEntry.TextProperty, nameof(ValidationViewModel.Login))
-                        .Bind(ValidatableEntry.ValidateCommandProperty, nameof(ValidationViewModel.ValidatePropertyCommand))
-                        .Bind(ValidatableEntry.IsValidProperty, "Validation[Login]"),
-                    new ValidatableEntry
-                        {
-                            ValidateCommandParameter = nameof(ValidationViewModel.Password)
-                        }
-                        .Bind(ValidatableEntry.ErrorTextProperty, "Validation[Password].Message")
-                        .Bind(ValidatableEntry.TextProperty, nameof(ValidationViewModel.Password))
-                        .Bind(ValidatableEntry.ValidateCommandProperty, nameof(ValidationViewModel.ValidatePropertyCommand))
-                        .Bind(ValidatableEntry.IsValidProperty, "Validation[Password]"),
-                    new ValidatableEntry
-                        {
-                            ValidateCommandParameter = nameof(ValidationViewModel.Value),
                             ErrorText = Localization.Wrong_Value_Error
                         }
-                        .Bind(ValidatableEntry.TextProperty, nameof(ValidationViewModel.Value))
-                        .Bind(ValidatableEntry.ValidateCommandProperty, nameof(ValidationViewModel.ValidatePropertyCommand))
-                        .Bind(ValidatableEntry.IsValidProperty, "Validation[Value]"),
+                        .Bind(ValidatableEntry.TextProperty, "Value.Value")
+                        .Bind(ValidatableEntry.ValidateCommandProperty, nameof(ValidationViewModel.ValidateCommand))
+                        .Bind(ValidatableEntry.ValidateCommandParameterProperty, nameof(ValidationViewModel.Value))
+                        .Bind(ValidatableEntry.IsValidProperty, "Value.IsValid"),
                     new Button
                     {
                         Text = "Validate all"

@@ -26,7 +26,7 @@ namespace Xamarin.Forms.Sample.UI.Pages
                         }.BindCommand(nameof(FilterViewModel.RemoveFilterCommand), parameterPath: null)
                     }
                 }
-            }.Bind(ListView.ItemsSourceProperty, "FilteredData[Persons]");
+            }.Bind(ListView.ItemsSourceProperty, "Persons.FilteredValue");
         }
     }
 }

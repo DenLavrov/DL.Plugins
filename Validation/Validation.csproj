@@ -6,20 +6,23 @@
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
       <Authors>Denis Lavrov</Authors>
       <PackageId>Xam.Plugin.Validation</PackageId>
-      <PackageTags>Validation;Attributes;.Net;C#;Xamarin.Forms;MVVM;Android;iOS;Xamarin</PackageTags>
-      <Description>Simple validation for Xamarin.Forms projects with MVVM structure
-Can be used by any project with c# lang</Description>
+      <PackageTags>Validation;ValidationObject;ValidatableObject;ValidationRules;IValidationRule;IValidatable;.Net;C#;Xamarin.Forms;MVVM;Android;iOS;Xamarin</PackageTags>
+      <Description>Simple validation for .NET projects with
+List of validation rules can be used
+Use IValidationObject to store and apply validation rules</Description>
       <PackageLicenseExpression>MIT</PackageLicenseExpression>
       <Version>1.0.5</Version>
       <PackageProjectUrl>https://github.com/DenLavrov/Xam.Plugins</PackageProjectUrl>
       <RepositoryUrl>https://github.com/DenLavrov/Xam.Plugins</RepositoryUrl>
       <RepositoryType>git</RepositoryType>
-      <PackageVersion>1.1.12</PackageVersion>
+      <PackageVersion>1.2.0</PackageVersion>
       <RootNamespace>Validation</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PropertiesValidation.Core" Version="1.0.2" />
+    <Compile Remove="Base\ValidationList.cs" />
+    <Compile Remove="Base\IValidatable.cs" />
+    <Compile Remove="Base\Validation.cs" />
   </ItemGroup>
 
 </Project>

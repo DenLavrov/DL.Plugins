@@ -1,18 +1,15 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Filter.Base;
 
 namespace Xamarin.Forms.Sample.BL.Models.Filters
 {
-    public class AlphabetFilter: IFilter
+    public class AlphabetFilter<T>: IFilter<T>
     {
-        static AlphabetFilter _instance;
-
-        public static AlphabetFilter Instance => _instance ??= new AlphabetFilter();
-        
-        public IEnumerable Apply(IEnumerable data)
+        public IEnumerable<T> Apply(IEnumerable<T> data)
         {
-            return data?.OfType<object>().OrderBy(x => x.ToString()).ToList();
+            return data?.OrderBy(x => x.ToString()).ToList();
         }
     }
 }
