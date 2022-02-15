@@ -6,7 +6,7 @@ namespace Validation.Base
     public class ValidationObject<T>: IValidationObject<T>
     {
         public T Value { get; set; }
-        public virtual bool IsValid { get; private set; } = true;
+        public bool IsValid { get; private set; } = true;
         public string Message { get; private set; }
         public string DefaultMessage { get; set; }
         public List<IValidationRule<T>> ValidationRules { get; } = new List<IValidationRule<T>>();
