@@ -5,15 +5,15 @@
       <langversion>8</langversion>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
       <Authors>Denis Lavrov</Authors>
-      <PackageId>Xam.Plugin.Validation</PackageId>
+      <PackageId>DL.Plugin.Validation</PackageId>
       <PackageTags>Validation;ValidationObject;ValidatableObject;ValidationRules;IValidationRule;IValidatable;.Net;C#;Xamarin.Forms;MVVM;Android;iOS;Xamarin</PackageTags>
       <Description>Simple validation for .NET projects with
 List of validation rules can be used
 Use IValidationObject to store and apply validation rules</Description>
       <PackageLicenseExpression>MIT</PackageLicenseExpression>
       <Version>1.0.5</Version>
-      <PackageProjectUrl>https://github.com/DenLavrov/Xam.Plugins</PackageProjectUrl>
-      <RepositoryUrl>https://github.com/DenLavrov/Xam.Plugins</RepositoryUrl>
+      <PackageProjectUrl>https://github.com/DenLavrov/DL.Plugins</PackageProjectUrl>
+      <RepositoryUrl>https://github.com/DenLavrov/DL.Plugins</RepositoryUrl>
       <RepositoryType>git</RepositoryType>
       <PackageVersion>1.2.2</PackageVersion>
       <RootNamespace>Validation</RootNamespace>
