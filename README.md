@@ -1,50 +1,26 @@
-# Xam.Plugin.Validation
-Simple lightweight validation for properties in Xamarin.Forms projects with MVVM architecture
+# DL.Plugin.Validation
+Simple lightweight validation for properties in .NET projects
 # Usage
+Use IValidationObject<T> with ValidationRules to provide a validation to a property
 
-First thing is to implement IValidatable interface by the object which properties you want to be validated.
 ```
 
-public class BaseViewModel: IValidatable
-    {
-        public ValidationList Validation { get; } = new ValidationList();
-
-        public BaseViewModel()
+public ValidationObject<string> Login
         {
-            ((IValidatable)this).Init();
+            get => Get(new ValidationObject<string>
+            {
+                ValidationRules = { Your list of validation rules }
+            });
+            set => Set(value);
         }
-    }
-    
-    
-```
-You can validate any property within validatable class by marking it with ValidationAttribute.
-If there are more than one attribute, then property will be valid if all of the conditions are matched.
-
-```
-
-[NotEmptyValidation("Login cannot be empty")]
-[RegexValidation(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", errorMessage: "Regex error")]
-public string Login
-{
-    get => Get<string>();
-    set => Set(value);
-}
         
 ```
 
-Triger a validation by command. You can bind to it from your page passing a property name as a command parameter.
-You can pass IEnumerable of PropertyNames, to validate a set of properties, or null to validate all of proprties.
+Trigger a validation
 
 ```
 
-Validation.NotifyOfPropertiesChanged.Execute("{PropertyName}");
-
-```
-There are two extension methods Validate(string propertyName) and ValidateAll() which return ValidationResult and trigger validation
-
-```
-
-var validationResult = (Some class instance which implements IValidatable).Validate("PropertyName");
+Login.Validate();
 
 ```
 
@@ -52,66 +28,41 @@ You can access the result of validation like this.
 
 ```
 
-Validation["PropertyName"]
+Login.IsValid
 
 ```
 
-Validation implements INotifyProperyChanged so after Notify Command is triggered ui gets changes.
 Binding example
 
 ```
 
-.Bind(IsValidProperty, "Validation['PropertyName'].IsValid"); or .Bind(IsValidProperty, "Validation['PropertyName']");
+.Bind(IsValidProperty, "Login.IsValid");
 
-.Bind(ErrorMessageProperty, "Validation['PropertyName'].Message");
+.Bind(ErrorMessageProperty, "Login.Message");
 
-```
-
-And you can pass harcoded value
+.Bind(ValueProperty, "Login.Value");
 
 ```
-
-Validation["PropertyName"] = new ValidationResult { IsValid = false } or Validation["PropertyName"] = false;
-
-```
-
-this will also trigger property changed event
 
 # Custom Validation
 
-Simply derive from ValidationAttribute
+Simply implement IValidationRule<T>
 
 ```
-public class NotEmptyValidationAttribute: ValidationAttribute
+public class NotEmptyValidationRule : IValidationRule<string>
     {
-        public NotEmptyValidationAttribute(string errorMessage = null): base(errorMessage: errorMessage)
+        public string Message { get; set; }
+
+        public ValidationResult Validate(string value)
         {
-        }
-        
-        public override bool Validate(object input, object parameter = null)
-        {
-            var value = input?.ToString();
-            return !string.IsNullOrWhiteSpace(value) || !string.IsNullOrEmpty(value);
+            return !string.IsNullOrWhiteSpace(value) || !string.IsNullOrEmpty(value)
+                ? ValidationResult.Valid()
+                : ValidationResult.Invalid(Message);
         }
     }
 
 ```
 
-# Error messages from resource file
-
-```
-Each attribute has errorMessageKey parameter:
-
-[SomeValidation(errorMessageKey: Error message key)]
-
-Just provide 'IReadOnlyDictionary<string, string> errorMessages', whose keys then will be used as errorMessageKey parameter, to Init(errorMessages) method:
-
-((IValidatable)this).Init(new Dictionary<string, string>{
-{Error message key, Error message from resources}
-});
-
-```
-
 # Examples
 
-Usage with pure MVVM architecture can be found in samples
+Usage for Xamarin.Forms project with pure MVVM architecture can be found in samples
