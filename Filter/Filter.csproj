@@ -4,17 +4,17 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>Denis Lavrov</Authors>
-        <PackageProjectUrl>https://github.com/DenLavrov/Xam.Plugins</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/DenLavrov/Xam.Plugins</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/DenLavrov/DL.Plugins</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/DenLavrov/DL.Plugins</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Filtering;Filter;Filters;Xamarin.Forms;MVVM;Android;iOS;Xamarin;.NET;C#;FilterableObject;FilterableObject&lt;T&gt;;IFilter;IFilter&lt;T&gt;</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Description>Filterable object for .net projects
 Contains filtered and original value
 A list of filters can be used</Description>
-        <PackageVersion>1.1.0</PackageVersion>
+        <PackageVersion>1.0.0</PackageVersion>
         <RootNamespace>Filter</RootNamespace>
-        <PackageId>Xam.Plugin.Filter</PackageId>
+        <PackageId>DL.Plugin.Filter</PackageId>
     </PropertyGroup>
 
     <ItemGroup>
