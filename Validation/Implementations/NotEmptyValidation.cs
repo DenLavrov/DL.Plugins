@@ -2,13 +2,14 @@
 
 namespace Validation.Implementations
 {
-    public class NotEmptyValidationRule : IValidationRule<string>
+    public class IsNotNullValidationRule<T> : IValidationRule<T>
+    where T: class
     {
         public string Message { get; set; }
 
-        public ValidationResult Validate(string value)
+        public ValidationResult Validate(T value)
         {
-            return !string.IsNullOrWhiteSpace(value) || !string.IsNullOrEmpty(value)
+            return value != null
                 ? ValidationResult.Valid()
                 : ValidationResult.Invalid(Message);
         }

@@ -1,21 +1,47 @@
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Filter.Base;
 using Xamarin.Forms.Sample.Annotations;
 
 namespace Xamarin.Forms.Sample.BL.Models
 {
-    public class BindableFilterableObject<T>: FilterableObject<T>, INotifyPropertyChanged
+    public class BindableFilterableObject<T>: IFilterableObject<T>, INotifyPropertyChanged
     {
-        public override void Filter()
+        IEnumerable<T> _value;
+
+        public IEnumerable<T> Value
         {
-            base.Filter();
+            get => _value;
+            set
+            {
+                _value = value;
+                Filter();
+            }
+        }
+
+        public IEnumerable<T> FilteredValue { get; private set; }
+        
+        public List<IFilter<T>> Filters { get; } = new();
+
+        public void Filter()
+        {
+            if (!Filters.Any())
+            {
+                FilteredValue = Value;
+                return;
+            }
+            var result = Filters[0].Apply(Value);
+            foreach (var filter in Filters.Skip(1))
+                result = filter.Apply(result);
+            FilteredValue = result;
             OnPropertyChanged(nameof(FilteredValue));
         }
 
-        public override void RemoveFiltering()
+        public void RemoveFiltering()
         {
-            base.RemoveFiltering();
+            FilteredValue = Value;
             OnPropertyChanged(nameof(FilteredValue));
         }
 

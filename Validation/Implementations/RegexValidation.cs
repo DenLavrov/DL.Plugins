@@ -5,18 +5,20 @@ namespace Validation.Implementations
 {
     public class RegexValidationRule : IValidationRule<string>
     {
-        public string Regex { get; }
-
+        public string Message { get; set; }
+        
+        readonly Regex _regex;
+        
         public RegexValidationRule(string regex)
         {
-            Regex = regex;
+            _regex = new Regex(regex);
         }
-
-        public string Message { get; set; }
-
+        
         public virtual ValidationResult Validate(string value)
         {
-            return !string.IsNullOrEmpty(value) && new Regex(Regex).IsMatch(value) ? ValidationResult.Valid() : ValidationResult.Invalid(Message);
+            return !string.IsNullOrEmpty(value) && _regex.IsMatch(value)
+                ? ValidationResult.Valid()
+                : ValidationResult.Invalid(Message);
         }
     }
 }

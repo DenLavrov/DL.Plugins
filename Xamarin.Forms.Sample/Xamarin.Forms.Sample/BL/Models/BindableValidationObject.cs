@@ -9,14 +9,47 @@ using Xamarin.Forms.Sample.Helpers;
 
 namespace Xamarin.Forms.Sample.BL.Models
 {
-    public class BindableValidationObject<T>: ValidationObject<T>, INotifyPropertyChanged
+    public class BindableValidationObject<T>: IValidationObject<T>, INotifyPropertyChanged
     {
-        public override bool Validate()
+        T _value;
+
+        public T Value
         {
-            var isValid = base.Validate();
+            get => _value;
+            set
+            {
+                _value = value;
+                OnPropertyChanged(nameof(Value));
+            }
+        }
+
+        public bool IsValid { get; private set; } = true;
+        public string Message { get; private set; }
+        public string DefaultMessage { get; set; }
+        public List<IValidationRule<T>> ValidationRules { get; } = new List<IValidationRule<T>>();
+        
+        public bool Validate()
+        {
+            string message = null;
+            var isValid = ValidationRules.All(x =>
+            {
+                var validationResult = x.Validate(Value);
+                if (!validationResult)
+                    message = validationResult.Message;
+                return validationResult;
+            });
+            if (isValid)
+            {
+                IsValid = true;
+                OnPropertyChanged(nameof(IsValid));
+                return true;
+            }
+            
+            Message = message ?? DefaultMessage;
+            IsValid = false;
             OnPropertyChanged(nameof(Message));
             OnPropertyChanged(nameof(IsValid));
-            return isValid;
+            return false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

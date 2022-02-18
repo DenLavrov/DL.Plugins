@@ -15,7 +15,7 @@ Use IValidationObject to store and apply validation rules</Description>
       <PackageProjectUrl>https://github.com/DenLavrov/DL.Plugins</PackageProjectUrl>
       <RepositoryUrl>https://github.com/DenLavrov/DL.Plugins</RepositoryUrl>
       <RepositoryType>git</RepositoryType>
-      <PackageVersion>1.0.1</PackageVersion>
+      <PackageVersion>1.0.2</PackageVersion>
       <RootNamespace>Validation</RootNamespace>
   </PropertyGroup>
 
@@ -23,6 +23,7 @@ Use IValidationObject to store and apply validation rules</Description>
     <Compile Remove="Base\ValidationList.cs" />
     <Compile Remove="Base\IValidatable.cs" />
     <Compile Remove="Base\Validation.cs" />
+    <Compile Remove="Implementations\ValueMultiplicationValidation.cs" />
   </ItemGroup>
 
 </Project>
