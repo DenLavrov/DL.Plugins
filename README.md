@@ -5,14 +5,10 @@ Use IValidationObject<T> with ValidationRules to provide a validation to a prope
 
 ```
 
-public ValidationObject<string> Login
-        {
-            get => Get(new ValidationObject<string>
+public IValidationObject<string> Login { get; } = new ValidationObject<string>
             {
                 ValidationRules = { Your list of validation rules }
-            });
-            set => Set(value);
-        }
+            };
         
 ```
 
