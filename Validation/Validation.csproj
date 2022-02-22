@@ -15,7 +15,7 @@ Use IValidationObject to store and apply validation rules</Description>
       <PackageProjectUrl>https://github.com/DenLavrov/DL.Plugins</PackageProjectUrl>
       <RepositoryUrl>https://github.com/DenLavrov/DL.Plugins</RepositoryUrl>
       <RepositoryType>git</RepositoryType>
-      <PackageVersion>1.3.0</PackageVersion>
+      <PackageVersion>1.3.1</PackageVersion>
       <RootNamespace>Validation</RootNamespace>
   </PropertyGroup>
 
